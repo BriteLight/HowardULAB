@@ -1,0 +1,22 @@
+In this lab you are going to create a program that can mimic how a text message conversation is between you and another person. You'll need to do the following:
+
+1. Create a struct  that can hold text message information such as sent time, message of text
+
+  - Assume the time of each text in the conversation is 1 minute after the first one was sent. Example text 1 was sent at 1:30pm, text 2 is 1:31pm
+
+2. The struct must also contain a pointer that points to the next message in the conversation
+
+- assume the last message in the text conversation points to an empty null pointer
+
+3. You'll be given a series of text messages from an input file that are contained on different lines in a text file
+
+- you'll have to use getline to read in a whole line of text
+
+4. You'll need to print the messages starting with the first message as the oldest message in the conversation and proceed to the next message by using the pointer to the next message in the conversation
+
+- assume the last message in the text file is also the last message in the conversation
+
+
+- assume the messages are aligned either left or right depending on their place in the conversation. The first one will be right-aligned
+
+  --you'll need to use the setw, left, and right elements
