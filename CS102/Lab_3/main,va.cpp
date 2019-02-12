@@ -20,23 +20,15 @@ class Messages
 
   int hour, min;
 
-  int GettimE();
+  int GettimE(hour,min);
 
   string Getcontent1();
-
-  void SettimE(int);
 };
 
 
-int Messages::GettimE(){
+int Messages::GettimE(hour,min){
 
 return timE;
-
-}
-
-void Messages::SettimE(int timE){
-
-timE = timE;
 
 }
 

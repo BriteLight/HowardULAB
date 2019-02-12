@@ -3,47 +3,29 @@
 #include <string> 
 #include <iomanip> 
 #include <stdio.h>
+#include <bits/stdc++.h> 
 #include <time.h> //A library for the clock
 using namespace std; 
 
 
 class Messages 
 {
-  private :
-  
-  int timE;
-  
-  public:
+  private: 
+  int  time = 0;
 
+
+  public:
   string messageText;
   Messages *nextMessage; 
 
   int hour, min;
 
-  int GettimE();
-
-  string Getcontent1();
-
-  void SettimE(int);
+  int  Gettime();
 };
 
+int main(){
 
-int Messages::GettimE(){
-
-return timE;
-
-}
-
-void Messages::SettimE(int timE){
-
-timE = timE;
-
-}
-
-
-int main() {
-
-  string content1;
+  string content1; 
 
 
   Messages text; 
@@ -83,5 +65,7 @@ int main() {
       time.min = time.min + 1;
 
   }
+
+ 
 
 }

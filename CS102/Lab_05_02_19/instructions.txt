@@ -1,0 +1,34 @@
+
+
+Write a program that contains a Video class and will create a playlist of movies.
+For now, keep the class definition in your main.cpp file.
+
+  * Your class must contain a default and non-default constructor
+  * The class must contain the following properties: The title, the type (all of
+    them will be movies), and the duration in hours and minutes
+  * The playlist will contain the following movies:
+        o Name: The Hate You Give, Type: Movie, Duration: 1 hour and 45 minutes
+        o Name: Crazy Rich Asians, Type: Movie, Duration: 2 hours and 10 minutes
+        o Name: If Beale Street Could Talk, Type: Movie, Duration: 2 hours and 15 minutes
+  * Your program will store the playlist in an array or vector (whichever you want)
+  * Your program must also print the playlist in random order. That being said,
+    your output only needs to match one of the six to get full credit
+  * Your output should look like the example shown below
+
+
+Now Playing "My Movie Playlist":
+*******************************************
+Now Playing:
+Title: The Hate You Give
+Type: Movie
+Duration: 1 hour and 45 minutes
+*******************************************
+Up Next:
+Title: Crazy Rich Asians
+Type: Movie
+Duration: 2 hours and 10 minutes
+*******************************************
+Then:
+Title: If Beale Street Could Talk
+Type: Movie
+Duration: 2 hours and 15 minutes
