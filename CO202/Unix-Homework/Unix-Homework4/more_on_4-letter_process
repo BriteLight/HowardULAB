@@ -1,0 +1,268 @@
+Script started on Tue, Feb 26, 2019 12:12:35 AM
+Identity added: /home/Brad/.ssh/other_pubs//Tamyen/accord.pem (/home/Brad/.ssh/other_pubs//Tamyen/accord.pem)
+Identity added: /home/Brad/.ssh/other_pubs//Rumsen/discord.pem (/home/Brad/.ssh/other_pubs//Rumsen/discord.pem)
+Identity added: /home/Brad/.ssh/other_pubs//ripcord.pem (/home/Brad/.ssh/other_pubs//ripcord.pem)
+[Brad@Computer2 ~]$ cd /home/Brad/tooling/example-samples/bb_dirs/b_acedemia/HowardULAB/Junior-Jolly-June/rsyncd/Unix-Homewor k/Unix-Homework4
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$        Just notes [K[K[K[K[K[K[K[K[K
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$     This is just a session for 4_lte[K[Ketter-do[K[Kword_file processingf[K   
+[K[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ vi qua-word.sh
+[?2004h[?1049h[?1h=[?2004h[1;64r[?12h[?12l[27m[23m[29m[m[H[2J[?25l[64;1H"qua-word.sh" 9L, 156C[2;1H▽[6n[2;1H  [1;1H[>c]10;?]11;?[1;1H[34m#!/bin/bash[m
+
+[33mfor[m word [33min[m [35m$([m[35mman look [m[33m|[m[35m [m[33msed[m[35m [m[33m'[m[31ms/,/ /g[m[33m'[m[35m)[m;
+[33mdo[5;9Hif [[m [35m`[m[33mecho[m[31m [m[35m$word[m[31m [m[33m|[m[35m wc -c`[m [33m==[m [31m5[m [33m];[m [33mthen[6;17Hecho[m[31m [m[35m$word[m[31m [m[33m>>[m 4_letter-words_file[7;17H[33mecho[m[31m [m[35m$word[m[33m;[8;9Hfi
+done[m
+[1m[34m~                                                                                                                            [11;1H~                                                                                                                            [12;1H~                                                                                                                            [13;1H~                                                                                                                            [14;1H~                                                                                                                            [15;1H~                                                                                                                            [16;1H~                                                                                                                            [17;1H~                                                                                                                            [18;1H~                                                                                                                            [19;1H~                                                                                                                            [20;1H~                                                                                                                            [21;1H~                                                                                                                            [22;1H~                                                                                                                            [23;1H~                                                                                                                            [24;1H~                                                                                                                            [25;1H~                                                                                                                            [26;1H~                                                                                                                            [27;1H~                                                                                                                            [28;1H~                                                                                                                            [29;1H~                                                                                                                            [30;1H~                                                                                                                            [31;1H~                                                                                                                            [32;1H~                                                                                                                            [33;1H~                                                                                                                            [34;1H~                                                                                                                            [35;1H~                                                                                                                            [36;1H~                                                                                                                            [37;1H~                                                                                                                            [38;1H~                                                                                                                            [39;1H~                                                                                                                            [40;1H~                                                                                                                            [41;1H~                                                                                                                            [42;1H~                                                                                                                            [43;1H~                                                                                                                            [44;1H~                                                                                                                            [45;1H~                                                                                                                            [46;1H~                                                                                                                            [47;1H~                                                                                                                            [48;1H~                                                                                                                            [49;1H~                                                                                                                            [50;1H~                                                                                                                            [51;1H~                                                                                                                            [52;1H~                                                                                                                            [53;1H~                                                                                                                            [54;1H~                                                                                                                            [55;1H~                                                                                                                            [56;1H~                                                                                                                            [57;1H~                                                                                                                            [58;1H~                                                                                                                            [59;1H~                                                                                                                            [60;1H~                                                                                                                            [61;1H~                                                                                                                            [62;1H~                                                                                                                            [63;1H~                                                                                                                            [m[64;108H6,17-31[7CAll[6;31H[?25h[27m[23m[29m[m[H[2J[?25l[1;1H[1m[36m#!/bin/bash[m
+
+[1m[33mfor[m word [1m[33min[m [1m[34m$([m[1m[31mman look [m[1m[33m|[m[1m[31m [m[1m[33msed[m[1m[31m [m[1m[33m'[m[1m[35ms/,/ /g[m[1m[33m'[m[1m[34m)[m;
+[1m[33mdo[5;9Hif [[m [1m[31m`[m[1m[33mecho[m[1m[35m [m[1m[34m$word[m[1m[35m [m[1m[33m|[m[1m[31m wc -c`[m [1m[33m==[m [1m[35m5[m [1m[33m];[m [1m[33mthen[6;17Hecho[m[1m[35m [m[1m[34m$word[m[1m[35m [m[1m[33m>>[m 4_letter-words_file[7;17H[1m[33mecho[m[1m[35m [m[1m[34m$word[m[1m[33m;[8;9Hfi
+done[m
+[1m[34m~                                                                                                                            [11;1H~                                                                                                                            [12;1H~                                                                                                                            [13;1H~                                                                                                                            [14;1H~                                                                                                                            [15;1H~                                                                                                                            [16;1H~                                                                                                                            [17;1H~                                                                                                                            [18;1H~                                                                                                                            [19;1H~                                                                                                                            [20;1H~                                                                                                                            [21;1H~                                                                                                                            [22;1H~                                                                                                                            [23;1H~                                                                                                                            [24;1H~                                                                                                                            [25;1H~                                                                                                                            [26;1H~                                                                                                                            [27;1H~                                                                                                                            [28;1H~                                                                                                                            [29;1H~                                                                                                                            [30;1H~                                                                                                                            [31;1H~                                                                                                                            [32;1H~                                                                                                                            [33;1H~                                                                                                                            [34;1H~                                                                                                                            [35;1H~                                                                                                                            [36;1H~                                                                                                                            [37;1H~                                                                                                                            [38;1H~                                                                                                                            [39;1H~                                                                                                                            [40;1H~                                                                                                                            [41;1H~                                                                                                                            [42;1H~                                                                                                                            [43;1H~                                                                                                                            [44;1H~                                                                                                                            [45;1H~                                                                                                                            [46;1H~                                                                                                                            [47;1H~                                                                                                                            [48;1H~                                                                                                                            [49;1H~                                                                                                                            [50;1H~                                                                                                                            [51;1H~                                                                                                                            [52;1H~                                                                                                                            [53;1H~                                                                                                                            [54;1H~                                                                                                                            [55;1H~                                                                                                                            [56;1H~                                                                                                                            [57;1H~                                                                                                                            [58;1H~                                                                                                                            [59;1H~                                                                                                                            [60;1H~                                                                                                                            [61;1H~                                                                                                                            [62;1H~                                                                                                                            [63;1H~                                                                                                                            [m[64;108H6,17-31[7CAll"qua-word.sh" 9L, 156C[6;31H[?25h[?25l[64;98H:[6;31H[64;1H[K[64;1H:[?2004h[?25hq[?25l[?25h![?25l[?25h[?25l[?2004l[64;1H[K[64;1H[?2004l[?1l>[?25h[?1049l[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ cat qua-word.sh 
+#!/bin/bash
+
+for word in $(man look | sed 's/,/ /g');
+do
+	if [ `echo $word | wc -c` == 5 ]; then
+		echo $word >> 4_letter-words_file
+		echo $word;
+	fi
+done
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ ./qua-word.sh 
+User
+NAME
+look
+with
+look
+look
+file
+look
+file
+must
+same
+that
+look
+file
+file
+used
+only
+case
+i.e.
+only
+This
+file
+Note
+that
+have
+been
+with
+sort
+case
+This
+file
+i.e.
+only
+help
+text
+look
+more
+were
+were
+sort
+look
+Path
+than
+path
+ALSO
+look
+AT&T
+look
+part
+from
+June
+2011
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ vi qua-word-no-dup.tcsh    
+[K[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ cat qua-word-no-dup.tcsh
+#!/bin/tcsh -f
+
+foreach word ( `cat 3_letter-words_file` )
+	grep -w $word 3_letter-words_file_no_dups >> /dev/null
+	if ( $status != 0 ) then
+		echo $word >> 3_letter-words_file_no_dups
+		echo $word
+	endif
+end
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$         Oops, need s an edit away from teh [K[Khe 3-ltter[K[K[K[Ker[Ktter process.... sorry!
+[K[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ cat qua-word-no-dup.tcsh[53G./qua-word.sh[K[53G[2@cat [68G[K[K[K[K[K[K[K[K[K[K[K[K[K[Kvi qua-word-no-dup.tcsh       
+[K[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ cat qua-word-no-dup.tcsh
+#!/bin/tcsh -f
+
+foreach word ( `cat 4_letter-words_file` )
+	grep -w $word 4_letter-words_file_no_dups >> /dev/null
+	if ( $status != 0 ) then
+		echo $word >> 4_letter-words_file_no_dups
+		echo $word
+	endif
+end
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$         Looks good now!  Now, try a run of the script.
+[K[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ ./qua-word-no-dup.tcsh [53G[K
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ ./qua-word-no-dup.tcsh
+User
+NAME
+look
+with
+file
+must
+same
+that
+used
+only
+case
+i.e.
+This
+Note
+have
+been
+sort
+help
+text
+more
+were
+Path
+than
+path
+ALSO
+AT&T
+part
+from
+June
+2011
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$        Now, Part 3......
+[K[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ cp 4_letter-words_file_no_dups  Leonard[53G[K
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ mkdir Leonard4
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ cp 4_letter-words_file_no_dups  Leonard4
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$         Finally, part[K[K[K[K{[KPArt4[K[K[K[Kart 4......
+[K[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ sort Leonard4/4_letter-words_file_no_dups > Leonard4/4_letter-words_sorte d
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ 
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ ^Dexit
+]0;~
+[32mBrad@Computer2 [33m~[0m
+$ exit
+
+Script done on Tue, Feb 26, 2019 12:32:21 AM
