@@ -1,0 +1,75 @@
+Script started on Sun, Jan 20, 2019  2:20:18 PM
+Identity added: /home/RochelleLeonard/.ssh/other_pubs//Tamyen/accord.pem (/home/RochelleLeonard/.ssh/other_pubs//Tamyen/accord.pem)
+Identity added: /home/RochelleLeonard/.ssh/other_pubs//Rumsen/discord.pem (/home/RochelleLeonard/.ssh/other_pubs//Rumsen/discord.pem)
+Identity added: /home/RochelleLeonard/.ssh/other_pubs//ripcord.pem (/home/RochelleLeonard/.ssh/other_pubs//ripcord.pem)
+[Rochelle Leoanrd@Computer2 ~]$ awEcrTam
+awEcrTam: Command not found.
+[Rochelle Leoanrd@Computer2 ~]$ awEcrTamrTam[K2Tam
+Jan-20 14:20:36
+awEc.tcsh                                                                                                                                                          0%    0     0.0KB/s   --:-- ETAawEc.tcsh                                                                                                                                                        100%  369     4.1KB/s   00:00    
+Jan-20 14:20:38
+======
+"i-04e01c588808a8b64"
+                    "PrivateIpAddress": "172.31.32.124",
+                    "ProductCodes": [],
+                    "PublicDnsName": "ec2-18-223-136-86.us-east-2.compute.amazonaws.com",
+                    "PublicIpAddress": "18.223.136.86",
+                    "State": {
+                        "Code": 16,
+                        "Name": "running"
+                    },
+                    "StateTransitionReason": "",
+===================
+
+
+======
+"i-05e7819f2223a91d8"
+                    "PrivateDnsName": "ip-172-31-3-76.us-west-2.compute.internal",
+                    "PrivateIpAddress": "172.31.3.76",
+                    "ProductCodes": [],
+                    "PublicDnsName": "",
+                    "State": {
+                        "Code": 80,
+                        "Name": "stopped"
+                    },
+                    "StateTransitionReason": "User initiated (2019-01-20 02:16:14 GMT)",
+===================
+
+
+======
+"i-006dff28a56928f0f"
+                    "PrivateIpAddress": "172.31.22.132",
+                    "ProductCodes": [],
+                    "PublicDnsName": "ec2-34-218-255-34.us-west-2.compute.amazonaws.com",
+                    "PublicIpAddress": "34.218.255.34",
+                    "State": {
+                        "Code": 16,
+                        "Name": "running"
+                    },
+                    "StateTransitionReason": "",
+===================
+
+
+======
+"i-0c3e099f30a6ab26a"
+                    "PrivateIpAddress": "172.31.25.35",
+                    "ProductCodes": [],
+                    "PublicDnsName": "ec2-54-191-176-48.us-west-2.compute.amazonaws.com",
+                    "PublicIpAddress": "54.191.176.48",
+                    "State": {
+                        "Code": 16,
+                        "Name": "running"
+                    },
+                    "StateTransitionReason": "",
+===================
+
+
+Jan-20 14:20:45
+Jan-20 14:20:47
+Jan-20 14:20:47
+[Rochelle Leoanrd@Computer2 ~]$ ^Dexit
+]0;~
+[32mRochelle Leoanrd@Computer2 [33m~[0m
+$ exit
+
+Script done on Sun, Jan 20, 2019  2:20:51 PM

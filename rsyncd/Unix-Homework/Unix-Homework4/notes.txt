@@ -1,0 +1,42 @@
+foreach word ( hsd nemdkf nsm akskm ned snsba owk ajksd esj ens )
+foreach? if ( `echo $word | wc -c` == 4 ) then
+foreach?    echo $word
+foreach? endif
+foreach? end
+hsd
+nsm
+ned
+owk
+esj
+ens
+
+
+
+
+foreach word ( `man look` )
+foreach? if ( `echo $word | wc -c` == 4 ) then
+foreach?    echo $word >> 3_letter-words_file_no_dups
+foreach?    echo $word
+foreach? endif
+foreach? end
+echo: No match.
+echo: No match.
+The
+any
+the
+was
+the
+not
+the
+are
+and
+the
+-a,
+Use
+the
+-d,
+Use
+set
+and
+
+

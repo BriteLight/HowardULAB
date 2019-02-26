@@ -1,0 +1,2419 @@
+Script started on Wed, Feb 13, 2019 11:09:27 AM
+Identity added: /home/Hannah/.ssh/other_pubs//Tamyen/accord.pem (/home/Hannah/.ssh/other_pubs//Tamyen/accord.pem)
+Identity added: /home/Hannah/.ssh/other_pubs//Rumsen/discord.pem (/home/Hannah/.ssh/other_pubs//Rumsen/discord.pem)
+Identity added: /home/Hannah/.ssh/other_pubs//ripcord.pem (/home/Hannah/.ssh/other_pubs//ripcord.pem)
+[Hannah@Computer2 ~]$ 
+[Hannah@Computer2 ~]$ 
+[Hannah@Computer2 ~]$ 
+[Hannah@Computer2 ~]$ 
+[Hannah@Computer2 ~]$ head -6 Homework3.txt
+
+
+1.  Write a program that reads at least 10 integers from a file in any directory and prints all integers in the file to screen in sorted order smallest to largest.
+
+
+
+[Hannah@Computer2 ~]$      Long story short one [K this one, I immediately tried at the CLI with tcsh. Testing for an integer
+[K[Hannah@Computer2 ~]$      Was not so easy. So many items passed through as if itls[K[K was an int bu[K[K. Python has a string module
+[K[Hannah@Computer2 ~]$      much like C++ has a string class that can test isdigit or isalpha. Just to show you tcsh anyway:
+[K[Hannah@Computer2 ~]$ 
+[Hannah@Computer2 ~]$ 
+[Hannah@Computer2 ~]$ 
+[Hannah@Computer2 ~]$ foreach file ( `grep -Rlws '[0-9]' HowardULAB/Lab12/` )
+foreach?    if ( -f $file && ! ( -x $file ) ) then
+foreach?        touch unsorted
+foreach?        echo "========  $file  ===="
+foreach?        foreach x ( `cat $file | grep -E "[0-9]" ` )
+foreach?          if ( $x =~ *[0-9]* ) then
+foreach?            echo $x >> unsorted
+foreach?          endif
+foreach?        end
+foreach?        sort -n unsorted
+foreach?        rm unsorted
+foreach?    endif
+foreach?   end
+[Hannah@Computer2 ~]$          
+[Hannah@Computer2 ~]$       Okay, what it pays to use an existing directory. Just in the wrion[K[K[Kong place this time.....
+[K[Hannah@Computer2 ~]$ 
+[Hannah@Computer2 ~]$ 
+[Hannah@Computer2 ~]$ foreach file ( `grep -Rlws '[0-9]' .good2go/Lab12/` )
+foreach?    if ( -f $file && ! ( -x $file ) ) then
+foreach?        touch unsorted
+foreach?        echo "========  $file  ===="
+foreach?        foreach x ( `cat $file | grep -E "[0-9]" ` )
+foreach?          if ( $x =~ *[0-9]* ) then
+foreach?            echo $x >> unsorted
+foreach?          endif
+foreach?        end
+foreach?        sort -n unsorted
+foreach?        rm unsorted
+foreach?    endif
+foreach?   end
+========  .good2go/Lab12/inFile.txt  ====
+1.4
+2.7
+2.7
+3.4
+5.3
+5.3
+5.3
+5.7
+6.3
+7.2
+7.3
+7.9
+8.3
+8.9
+11.3
+11.3
+11.4
+12.4
+12.4
+12.7
+14.4
+14.7
+15.2
+17.8
+18.3
+21.3
+23.9
+28.2
+32.1
+34.1
+34.4
+43.2
+51.2
+63.1
+71.3
+========  .good2go/Lab12/storray.cpp  ====
+foreach: No match.
+[Hannah@Computer2 ~]$ 
+[Hannah@Computer2 ~]$ 
+[Hannah@Computer2 ~]$ 
+[Hannah@Computer2 ~]$           Not too shabby, huh>?[K[K? But the cha[Keck it[Ksn't fool proof. You can see  I try finding those files
+[K[Hannah@Computer2 ~]$          that have integers, first "if statement'[K' [K" to check if its a[K[K's a plain text file and not executable,
+[K[Hannah@Computer2 ~]$          then within a file that passw[Kes the tes[K[K[K[K[Khrough, every charater it[Ks tested for an integer. But look....
+[K[Hannah@Computer2 ~]$ 
+[Hannah@Computer2 ~]$ 
+[Hannah@Computer2 ~]$ foreach file ( `grep -Rlws '[0-9]' .good2go/Lab9/` )
+foreach?    if ( -f $file && ! ( -x $file ) ) then
+foreach?        touch unsorted
+foreach?        echo "========  $file  ===="
+foreach?        foreach x ( `cat $file | grep -E "[0-9]" ` )
+foreach?          if ( $x =~ *[0-9]* ) then
+foreach?            echo $x >> unsorted
+foreach?          endif
+foreach?        end
+foreach?        sort -n unsorted
+foreach?        rm unsorted
+foreach?    endif
+foreach?   end
+========  .good2go/Lab9/Problem2/inFile.txt  ====
+0.89
+1.09
+2.26
+3.10
+4.50
+========  .good2go/Lab9/Problem2/LumberNumber2.cpp  ====
+if: Expression Syntax.
+[Hannah@Computer2 ~]$ 
+[Hannah@Computer2 ~]$ foreach file ( `grep -Rlws '[0-9]' .good2go/Lab9/Lu[K[KProblem2/Lumber-inFile.txt ` )
+foreach?    if ( -f $file && ! ( -x $file ) ) then
+foreach?        touch unsorted
+foreach?        echo "========  $file  ===="
+foreach?        foreach x ( `cat $file | grep -E "[0-9]" ` )
+foreach?          if ( $x =~ *[0-9]* ) then
+foreach?            echo $x >> unsorted
+foreach?          endif
+foreach?        end
+foreach?        sort -n unsorted
+foreach?        rm unsorted
+foreach?    endif
+foreach?   end
+========  .good2go/Lab9/Problem2/Lumber-inFile.txt  ====
+0
+1
+2
+3
+4
+09
+10
+26
+50
+89
+[Hannah@Computer2 ~]$ 
+[Hannah@Computer2 ~]$         See how it ran into a problm[Kem getting to this text file because of the .cpp file it hit first.
+[K[Hannah@Computer2 ~]$ 
+[Hannah@Computer2 ~]$ 
+[Hannah@Computer2 ~]$ foreach file ( `grep -Rlws '[0-9]' .good2go/Lab12/CarDealer-inFile.txt ` )
+foreach? foreach file ( `grep -Rlws '[0-9]' .good2go/Lab[10G[K   if ( -f $file && ! ( -x $file ) ) then
+foreach?        touch unsorted
+foreach?        echo "========  $file  ===="
+foreach?        foreach x ( `cat $file | grep -E "[0-9]" ` )
+foreach?          if ( $x =~ *[0-9]* ) then
+foreach?            echo $x >> unsorted
+foreach?          endif
+foreach?        end
+foreach?        sort -n unsorted
+foreach?        rm unsorted
+foreach?    endif
+foreach?   end
+========  .good2go/Lab12/CarDealer-inFile.txt  ====
+1
+1
+1
+1
+2
+2
+2
+2
+2
+2
+2
+3
+3
+3
+3
+3
+3
+3
+3
+3
+3
+3
+3
+4
+4
+4
+4
+4
+4
+4
+5
+5
+5
+5
+6
+7
+7
+7
+7
+7
+7
+7
+7
+8
+8
+8
+9
+9
+9
+11
+11
+11
+12
+12
+12
+14
+14
+15
+17
+18
+21
+23
+28
+32
+34
+34
+43
+51
+63
+71
+[Hannah@Computer2 ~]$ 
+[Hannah@Computer2 ~]$ 
+[Hannah@Computer2 ~]$ 
+[Hannah@Computer2 ~]$ 
+[Hannah@Computer2 ~]$         So, I resorted bacj[Kk to using BASH because of this awson[Kme test. Eqa[K[K[Kthe [K[K[KEqual to test (-eq) says if this
+[K[Hannah@Computer2 ~]$         string equals the numerical values o[K[K of the same variable, then it is indeed an interge[K[K[Kger .
+[K[Hannah@Computer2 ~]$ 
+[Hannah@Computer2 ~]$ 
+[Hannah@Computer2 ~]$ 
+[Hannah@Computer2 ~]$ 
+[Hannah@Computer2 ~]$ ls /home/Hannah/tooling/example-samples/bb_dirs/b_academia/HowardULAB/Junior-Jolly-June/rsyncd/Unix-Homewor k/Unix-Homework3
+check_for_integers.sh  Notes-on-Homework3.gdoc	Unix-Homework3.gdoc
+[Hannah@Computer2 ~]$ 
+[Hannah@Computer2 ~]$ 
+[Hannah@Computer2 ~]$ 
+[Hannah@Computer2 ~]$ cd !$
+cd /home/Hannah/tooling/example-samples/bb_dirs/b_academia/HowardULAB/Junior-Jolly-June/rsyncd/Unix-Homework/Unix-Homework3
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ cat check_for_integers.sh
+#!/bin/bash
+
+FOLDER=$1
+
+for file in $(grep -Rlws '[0-9]' $FOLDER);
+do
+        if  [ -f $file ] && ! [ -x $file ] ; then
+                touch unsorted
+                echo "==========  $file  ====="
+                for x in $(cat $file|grep -E "[0-9]");
+                do
+                        if [ "$x" -eq "$x" 2>/dev/null ]; then
+                                echo $x >> unsorted;
+                        fi;
+                done
+                sort -n unsorted
+                rm unsorted;
+        fi;
+done
+
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ chmod u+[Kg+[K[K[Ka+x check_for_integers.sh
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ./check_for_integers.sh /home/Hannah/.good2go/Lab12
+==========  /home/Hannah/.good2go/Lab12/inFile.txt  =====
+==========  /home/Hannah/.good2go/Lab12/storray.cpp  =====
+==========  /home/Hannah/.good2go/Lab12/CarDealer-inFile.txt  =====
+1
+1
+1
+2
+2
+2
+2
+2
+3
+3
+3
+3
+3
+3
+3
+3
+3
+3
+3
+4
+4
+4
+4
+4
+5
+5
+5
+5
+6
+7
+7
+7
+7
+7
+7
+7
+7
+8
+8
+8
+9
+9
+9
+11
+11
+11
+12
+12
+12
+14
+14
+15
+17
+18
+21
+23
+28
+32
+34
+34
+43
+51
+63
+71
+==========  /home/Hannah/.good2go/Lab12/unsorted  =====
+2
+2
+3
+7
+7
+9
+14
+23
+51
+71
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$     Pretty good, huh? 
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ./check_for_integers.sh /home/Hannah/.good2go/Lab12[K[K[K[Kab9/Problem2/
+==========  /home/Hannah/.good2go/Lab9/Problem2/inFile.txt  =====
+==========  /home/Hannah/.good2go/Lab9/Problem2/LumberNumber2.cpp  =====
+==========  /home/Hannah/.good2go/Lab9/Problem2/Lumber-inFile.txt  =====
+0
+1
+2
+3
+4
+09
+10
+26
+50
+89
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$     So, on to problem 2......
+So,: Command not found.
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ echo "" ; head -12 Homework3.txt | tail -6 ; echo ""
+
+head: cannot open 'Homework3.txt' for reading: No such file or directory
+
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ cat /dev/null
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ cat /dev/null[K[K[K[Kclipboard
+
+2   Write a program named check_directory.sh to examine a given directory's contents.
+
+            run "./check_dir.sh path"
+
+         A. checks if each item in the path directory is a file or a directory.
+         B. output the number of files and number of directories in specified path directory.
+
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ cat check_dir.sh
+#!/bin/bash
+
+TESTPATH=$1
+DIRNUM=0
+FILNUM=0
+
+
+for file in $(find $TESTPATH -name "*");
+do
+  if [ -f "${file}" ]; then
+        FILNUM=`expr $FILNUM + 1`;
+  elif [ -d "${file}" ]; then
+        DIRNUM=`expr $DIRNUM + 1`;
+  fi;
+done
+echo "Number of folders in $TESTPATH is $DIRNUM"
+echo "Number of files   in $TESTPATH is $FILNUM"
+
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ chmod 754 check_dir.sh
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ./check_dir.sh ../../../../Junior-Jolly-June/
+
+Number of folders in ../../../../Junior-Jolly-June/ is 125
+Number of files   in ../../../../Junior-Jolly-June/ is 216
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ./check_dir.sh ..,[K/../../CS102
+find: ‘../../../CS102’: No such file or directory
+Number of folders in ../../../CS102 is 0
+Number of files   in ../../../CS102 is 0
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$       Oops....!!!
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ./check_dir.sh ../../../CS102102[K[K[K[K[KC[K[K[K[KCS1[K[K[K../C[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ls -l ../../..
+total 32
+drwxr-xr-x 1 Hannah None    0 Feb  3 12:41 CO202
+drwxr-xr-x 1 Hannah None    0 Feb  3 12:47 CS211
+drwxr-xr-x 1 Hannah None    0 Feb  3 12:41 Extra-Cred
+drwxr-xr-x 1 Hannah None    0 Feb  3 12:41 Lab10
+drwxr-xr-x 1 Hannah None    0 Feb  3 12:41 Lab12
+drwxr-xr-x 1 Hannah None    0 Feb  3 12:41 Lab6
+drwxr-xr-x 1 Hannah None    0 Feb  3 12:41 Lab7
+drwxr-xr-x 1 Hannah None    0 Feb  3 12:41 Lab8
+drwxr-xr-x 1 Hannah None    0 Feb  3 12:41 Lab9
+-rw-r--r-- 1 Hannah None 1211 Feb  3 12:41 LICENSE.md
+-rw-r--r-- 1 Hannah None  987 Feb  3 12:41 README.md
+drwxr-xr-x 1 Hannah None    0 Feb 12 10:47 rsyncd
+drwxr-xr-x 1 Hannah None    0 Feb  3 12:41 unassigned
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ./check_dir.sh  ../../../CS211
+Number of folders in ../../../CS211 is 4
+Number of files   in ../../../CS211 is 3
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$      Now, I'm taking a break. But next is Problem3:
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ cat /dev/clipboard
+3.  Write a program named check_source_cp.sh to copy files. When run:
+
+            run "./check_source_cp.sh sourcefile targetfilename"
+
+         A. checks whether source file exists.
+         B. if source file exists, then copy sourcefile to targetfilename.
+         C. if source file does not exist, exit program with an error message "Source file does note exist, signed <script writer name (you)!>".
+
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$        Just play arond with [K[K[K[K[K[Kund with the CLI first:
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ echo [K[K[K[K
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ls ../../../../../../../b_pl[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ls ../../../../../../b_playonly/test/
+__pycache__  rcpro.zip	test__name__main__.py  use-test-module.py
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ^ls^ls -l
+ls -l ../../../../../../b_playonly/test/
+total 48
+drwxr-xr-x 1 Hannah None     0 Dec  5 21:47 __pycache__
+-rw-r--r-- 1 Hannah None 12516 Jan 29 19:13 rcpro.zip
+-rw-r--r-- 1 Hannah None    83 Dec  5 21:58 test__name__main__.py
+-rw-r--r-- 1 Hannah None   263 Dec  5 21:58 use-test-module.py
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$       Let's do a faile[K[K[K[K[Kattempt to copy 'from' the [K[K[Ka wrong place (bad source path)
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ cp /home/Hannah/test
+test            test-preserved  testy           
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ cp /home/Hannah/test    (BTW, this trick is Cntrl-D for "file completion.)
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$         The file "test" exist in the Home Dir. 
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$        The directory "test" is where use-test-module.py is located[K[K[K[K[K[K[K[K[Kactually is.
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ cp /home/Hannah/test/use-test-module.py ../../Unix-Homework/
+cp: cannot stat '/home/Hannah/test/use-test-module.py': Not a directory
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$        Or, you could run into a missing file with a good path.
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ^test/
+cp /home/Hannah/use-test-module.py ../../Unix-Homework/
+cp: cannot stat '/home/Hannah/use-test-module.py': No such file or directory
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$        FYI, directly afterwards there's a status evrinoment variable set
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ se[K[Kecho $stus[K[Katus
+1
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$       Good news in a shell is zero (0), and[Kt[Kything else flips the status.
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$       For giggles, lest[K[Kts make the target path falty[K[K[Kulty with a good source.
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ cp ../../../../../../b_playonly/test/use-test-module.py  ../Unix-Homework 4/
+cp: cannot create regular file '../Unix-Homework4/': Not a directory
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$       Ok, enough playong around athe [K[K[Kt the CLI and play inside a script...
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$       Here's some it[Knteresting pointers [K[K[K[K[K[K[K[Ktcsh string ops that are useful here:
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ lynx -dump -crawl https://sites.google.com/site/xiangyangsite/home/techni cal-tips/linux-unix/shell-programming/tcsh | head -120 | tail -7
+
+   set myfile = /usr/users/abcd1234/sorter.c
+   set head = $myfile:h    -- gets value /usr/users/abcd1234
+   set tail = $myfile:t    -- gets value sorter.c
+   set root = $myfile:r    -- gets value /usr/users/abcd1234/sorter
+   set extension = $myfile:e    -- gets value c
+
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$        ls -ltr
+total 80
+-rw-r--r-- 1 Hannah None 177 Feb 13 20:33 Notes-on-Homework3.gdoc
+-rw-r--r-- 1 Hannah None 177 Feb 13 23:08 Unix-Homework3.gdoc
+-rwxr-xr-x 1 Hannah None 518 Feb 13 23:45 check_for_integers.sh
+-rwxr-xr-x 1 Hannah None 327 Feb 13 23:53 check_dir.sh
+-rwxr-xr-x 1 Hannah None 993 Feb 14 13:51 check_source_cp.tcsh
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ vi check_source_cp.tcsh      [ Done in  a[Ka seperate terminal ] Tcsh for no[K[K[K[K[K4kix
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$     In the course of write[King this, I'm going to the CLI alot too.[P[P[1@a[P[1@b[1@a[1@c[1@k [1@ [1@t[1@o the CLI alot too.
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ cd ../..
+[Hannah@Computer2 ~/<5>Junior-Jolly-June/rsyncd]$ cd ..
+[Hannah@Computer2 ~/<4>HowardULAB/Junior-Jolly-June]$ 
+[Hannah@Computer2 ~/<4>HowardULAB/Junior-Jolly-June]$ foreach cwd ( `pwd` )
+foreach? if ( -f #cwd[K[K[K[K$cwd/README.md ) then
+foreach?   echo "Good Job"
+foreach? endif
+foreach? end
+Good Job
+[Hannah@Computer2 ~/<4>HowardULAB/Junior-Jolly-June]$ 
+[Hannah@Computer2 ~/<4>HowardULAB/Junior-Jolly-June]$ ls 
+CO202  CS211  Extra-Cred  Lab10  Lab12	Lab6  Lab7  Lab8  Lab9	LICENSE.md  README.md  rsyncd  unassigned
+[Hannah@Computer2 ~/<4>HowardULAB/Junior-Jolly-June]$ 
+[Hannah@Computer2 ~/<4>HowardULAB/Junior-Jolly-June]$ foreach x [Kcwd ( `pwd` )
+foreach? if ( ! ( -f #[K$cwd/README-5.nd[K[Kmd ) ) then
+foreach?   echo "missing"
+foreach? endif
+foreach? end
+missing
+[Hannah@Computer2 ~/<4>HowardULAB/Junior-Jolly-June]$ 
+[Hannah@Computer2 ~/<4>HowardULAB/Junior-Jolly-June]$ 
+[Hannah@Computer2 ~/<4>HowardULAB/Junior-Jolly-June]$ foreach cwd ( `pwd` )
+foreach? set source = $cwd/README.md
+foreach? set badtry = $cwd/README-5.md
+foreach? if ( -f $source ) then
+foreach?   echo "Got it, file name[K[K[K[K$source:t is right here $source:h"
+foreach? endif
+foreach? if ( ! ( -f $a[Kbadtry ) ) then
+foreach?   echo "But whats this: No such file named $badtry:h"t""[K"[Kt""
+foreach?   if ( -d $badtry:h ) then
+foreach?     echo "Path inde[Kicated for $badtry:t is[K[Kdoes exist however: $badtry:h"
+foreach?   else
+foreach?     echo "Path for $badtry:t doesnt even exist"
+foreach?   endif
+foreach? endif
+foreach? end
+Got it, file README.md is right here /home/Hannah/tooling/example-samples/bb_dirs/b_academia/HowardULAB/Junior-Jolly-June
+But whats this: No such file named README-5.md
+Path indicated for README-5.md does exist however: /home/Hannah/tooling/example-samples/bb_dirs/b_academia/HowardULAB/Junior-Jolly-June
+[Hannah@Computer2 ~/<4>HowardULAB/Junior-Jolly-June]$ 
+[Hannah@Computer2 ~/<4>HowardULAB/Junior-Jolly-June]$ 
+[Hannah@Computer2 ~/<4>HowardULAB/Junior-Jolly-June]$ 
+[Hannah@Computer2 ~/<4>HowardULAB/Junior-Jolly-June]$     Now, I'm gogin[K[K[King to repeat this CLI test on a i[Knon-existing directot[Ky[Kry.
+[K[Hannah@Computer2 ~/<4>HowardULAB/Junior-Jolly-June]$     What you see e[Kme doing is a CGY[K[KYGWIN trick with the clipboard and[K[K[K& sed.
+[K[Hannah@Computer2 ~/<4>HowardULAB/Junior-Jolly-June]$ 
+[Hannah@Computer2 ~/<4>HowardULAB/Junior-Jolly-June]$ 
+[Hannah@Computer2 ~/<4>HowardULAB/Junior-Jolly-June]$ foe[Kr[K[K[K
+[Hannah@Computer2 ~/<4>HowardULAB/Junior-Jolly-June]$ foreach [K[K[K[K[K[K[K
+[Hannah@Computer2 ~/<4>HowardULAB/Junior-Jolly-June]$ cat /dev/clipboard | sed 's/foreach?//g'
+ set source = $cwd/README.md
+ set badtry = $cwd/README-5.md
+ if ( -f $source ) then
+   echo "Got it, file $source:t is right here $source:h"
+ endif
+ if ( ! ( -f $badtry ) ) then
+   echo "But whats this: No such file named $badtry:t"
+   if ( -d $badtry:h ) then
+     echo "Path indicated for $badtry:t does exist however: $badtry:h"
+   else
+     echo "Path for $badtry:t doesnt even exist"
+   endif
+ endif
+ end
+[Hannah@Computer2 ~/<4>HowardULAB/Junior-Jolly-June]$ 
+[Hannah@Computer2 ~/<4>HowardULAB/Junior-Jolly-June]$ 
+[Hannah@Computer2 ~/<4>HowardULAB/Junior-Jolly-June]$      Help [K[K[K[KNow, I can just copy this to run again. Help with interper[Kters when
+[K[Hannah@Computer2 ~/<4>HowardULAB/Junior-Jolly-June]$      the prompt changes. Python can do this with clipboard interactively. 
+[K[Hannah@Computer2 ~/<4>HowardULAB/Junior-Jolly-June]$ 
+[Hannah@Computer2 ~/<4>HowardULAB/Junior-Jolly-June]$ 
+[Hannah@Computer2 ~/<4>HowardULAB/Junior-Jolly-June]$       I'm altering the main input variable to reflect a "bad path" stp[K[K[K....
+[K[Hannah@Computer2 ~/<4>HowardULAB/Junior-Jolly-June]$ 
+[K[Hannah@Computer2 ~/<4>HowardULAB/Junior-Jolly-June]$ 
+[Hannah@Computer2 ~/<4>HowardULAB/Junior-Jolly-June]$ cat /dev/clipboard | sed 's/foreach?//g'[P[P[P[P[P[P[P[P[1@c[1@w[1@d/w/g'r/g'o/g'n/g'g/g'p/g'a/g't/g'h/g'
+ set source = $wrongpath/README.md
+ set badtry = $wrongpath/README-5.md
+ if ( -f $source ) then
+   echo "Got it, file $source:t is right here $source:h"
+ endif
+ if ( ! ( -f $badtry ) ) then
+   echo "But whats this: No such file named $badtry:t"
+   if ( -d $badtry:h ) then
+     echo "Path indicated for $badtry:t does exist however: $badtry:h"
+   else
+     echo "Path for $badtry:t doesnt even exist"
+   endif
+ endif
+ end
+[Hannah@Computer2 ~/<4>HowardULAB/Junior-Jolly-June]$ for[K[K[K
+[Hannah@Computer2 ~/<4>HowardULAB/Junior-Jolly-June]$ 
+[Hannah@Computer2 ~/<4>HowardULAB/Junior-Jolly-June]$ foreach wrongpath ( /gloab[K[Kbal/warming/ )
+foreach?  set source = $wrongpath/README.md
+foreach?  set badtry = $wrongpath/README-5.md
+foreach?  if ( -f $source ) then
+foreach?    echo "Got it, file $source:t is right here $source:h"
+foreach?  endif
+foreach?  if ( ! ( -f $badtry ) ) then
+foreach?    echo "But whats this: No such file named $badtry:t"
+foreach?    if ( -d $badtry:h ) then
+foreach?      echo "Path indicated for $badtry:t does exist however: $badtry:h"
+foreach?    else
+foreach?      echo "Path for $badtry:t doesnt even exist"
+foreach?    endif
+foreach?  endif
+foreach?  end
+But whats this: No such file named README-5.md
+Path for README-5.md doesnt even exist
+[Hannah@Computer2 ~/<4>HowardULAB/Junior-Jolly-June]$ 
+[Hannah@Computer2 ~/<4>HowardULAB/Junior-Jolly-June]$ 
+[Hannah@Computer2 ~/<4>HowardULAB/Junior-Jolly-June]$ 
+[Hannah@Computer2 ~/<4>HowardULAB/Junior-Jolly-June]$ 
+[Hannah@Computer2 ~/<4>HowardULAB/Junior-Jolly-June]$ cat che[K[K[K[K[K[K
+[Hannah@Computer2 ~/<4>HowardULAB/Junior-Jolly-June]$ 
+[Hannah@Computer2 ~/<4>HowardULAB/Junior-Jolly-June]$ 
+[Hannah@Computer2 ~/<4>HowardULAB/Junior-Jolly-June]$ cd re[Ksyncd/Unix-Homework/Unix-Homework3
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ cat[K[K[Kls -ltr
+total 80
+-rw-r--r-- 1 Hannah None  177 Feb 13 20:33 Notes-on-Homework3.gdoc
+-rw-r--r-- 1 Hannah None  177 Feb 13 23:08 Unix-Homework3.gdoc
+-rwxr-xr-x 1 Hannah None  518 Feb 13 23:45 check_for_integers.sh
+-rwxr-xr-x 1 Hannah None  327 Feb 13 23:53 check_dir.sh
+-rwxr-xr-x 1 Hannah None 1006 Feb 14 14:40 check_source_cp.tcsh
+-rw-r--r-- 1 Hannah None    0 Feb 14 14:41 test.txt
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ cat[K[K[Krm test.txt
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ./check_source_cp.tcsh 
+
+		This take two arguments for source file and target.  
+		Path for source file has to exist or on will be created for you. 
+		Path for taget has to exist or one will be created for you. 
+		You will need write access to the taget directory. 
+		Minimum of one argument will merely create the file in the current working directory. 
+			
+			
+		
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ./check_source_cp.tcsh $DOTREPO/test-nonexistant.txt
+No such file named test-nonexistant.txt in /home/Hannah/tooling/example-samples/bb_dirs/b_playonly/test/
+Would you like to create test-nonexistant.txt here: /home/Hannah/tooling/example-samples/bb_dirs/b_academia/HowardULAB/Junior-Jolly-June/rsyncd/Unix-Homework/Unix-Homework3?
+yes or no:  yes
+-rw-r--r-- 1 Hannah None 0 Feb 14  2019 /home/Hannah/tooling/example-samples/bb_dirs/b_academia/HowardULAB/Junior-Jolly-June/rsyncd/Unix-Homework/Unix-Homework3/test-nonexistant.txt
+Just created an empty file named test-nonexistant.txt at this location: 
+ /home/Hannah/tooling/example-samples/bb_dirs/b_academia/HowardULAB/Junior-Jolly-June/rsyncd/Unix-Homework/Unix-Homework3
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ cat [K[K[Kls -ltr
+total 80
+-rw-r--r-- 1 Hannah None  177 Feb 13 20:33 Notes-on-Homework3.gdoc
+-rw-r--r-- 1 Hannah None  177 Feb 13 23:08 Unix-Homework3.gdoc
+-rwxr-xr-x 1 Hannah None  518 Feb 13 23:45 check_for_integers.sh
+-rwxr-xr-x 1 Hannah None  327 Feb 13 23:53 check_dir.sh
+-rwxr-xr-x 1 Hannah None 1006 Feb 14 14:40 check_source_cp.tcsh
+-rw-r--r-- 1 Hannah None    0 Feb 14 14:43 test-nonexistant.txt
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ rm test-nonexistant.txt 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ cat check_source_cp.tcsh 
+#!/usr/bin/tcsh -f
+
+# Simple file copy with some sanity checks
+#
+#
+
+set CWD = `pwd`
+if ( $# == 2 ) then
+	set sour=$1
+	set targ=$2
+else if ( $# == 1 ) then
+	if ( !(-f $1) ) then
+		set source=$1
+		set sourc = $source:t
+		if ( -d $source:h ) then
+			echo "No such file named $sourc in $source:h"
+			echo "Would you like to create $sourc here: $CWD?"
+			echo -n "yes or no:  "
+			set ans=$<
+			if ( $ans == "yes" ) then
+				touch $CWD/$sourc
+				if ( $status == 0 ) then
+					ls -l $CWD/$sourc 
+					echo "Just created an empty file named $sourc at this location: \n $CWD"
+				endif
+			endif
+		endif
+	endif
+else if ( $# == 0 || $# > 2 ) then
+	echo "\
+		This take two arguments for source file and target.  \
+		Path for source file has to exist or on will be created for you. \
+		Path for taget has to exist or one will be created for you. \
+		You will need write access to the taget directory. \
+		Minimum of one argument will merely create the file in the current working directory. \
+			\
+			\
+		"
+endif
+#		
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ cat check_source_cp.tcsh[53Grm test-nonexistant.txt[K[53Gls -ltr[K[53G./check_source_cp.tcsh $DOTREPO/test-nonexistant.txt[P[P[P[P[1@E[P[P[P[1@d[1@o[1@e[1@s[1@n[1@t
+No such file named test-doesntExist.txt in /home/Hannah/tooling/example-samples/bb_dirs/b_playonly/test/
+Would you like to create test-doesntExist.txt here: /home/Hannah/tooling/example-samples/bb_dirs/b_academia/HowardULAB/Junior-Jolly-June/rsyncd/Unix-Homework/Unix-Homework3?
+yes or no:  yes
+
+
+
+-rw-r--r-- 1 Hannah None 0 Feb 14  2019 /home/Hannah/tooling/example-samples/bb_dirs/b_academia/HowardULAB/Junior-Jolly-June/rsyncd/Unix-Homework/Unix-Homework3/test-doesntExist.txt
+Just created an empty file named test-doesntExist.txt at this location: 
+ /home/Hannah/tooling/example-samples/bb_dirs/b_academia/HowardULAB/Junior-Jolly-June/rsyncd/Unix-Homework/Unix-Homework3
+
+
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$      Okay, os[K[Kso I'll need to accept Y/y/YES/yes & N/n/NO/no....
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$      Also want to start accounting for two arguments, missinf [Kg either
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$      file or directory or both for source and check onb[K target path.
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ./check_source_cp.tcsh $DOTREPO/test-doesntExist.txt[53Gcat check_source_cp.tcsh[K
+#!/usr/bin/tcsh -f
+
+# Simple file copy with some sanity checks
+#
+#
+
+set CWD = `pwd`
+if ( $# == 2 ) then
+	set sour=$1
+	set targ=$2
+else if ( $# == 1 ) then
+	if ( !(-f $1) ) then
+		set source=$1
+		set sourc = $source:t
+		if ( -d $source:h ) then
+			echo "No such file named $sourc in $source:h"
+			echo "Would you like to create $sourc here: $CWD?"
+			echo -n "yes or no:  "
+			set ans=$<
+			if ( $ans == "yes" ) then
+				touch $CWD/$sourc
+				if ( $status == 0 ) then
+					repeat 3 echo ""
+					ls -l $CWD/$sourc 
+					echo "Just created an empty file named $sourc at this location: \n $CWD"
+					repeat 2 echo ""
+				endif
+			endif
+		endif
+	endif
+else if ( $# == 0 || $# > 2 ) then
+	echo "\
+		This take two arguments for source file and target.  \
+		Path for source file has to exist or on will be created for you. \
+		Path for taget has to exist or one will be created for you. \
+		You will need write access to the taget directory. \
+		Minimum of one argument will merely create the file in the current working directory. \
+			\
+			\
+		"
+endif
+#		
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$       Yest [K[Kt a few more modifications to still but here what Ive got....
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ cat check_source_cp.tcsh
+#!/usr/bin/tcsh -f
+
+# Simple file copy with some sanity checks
+#
+#
+
+set CWD = `pwd`
+if ( $# == 2 ) then
+	set sour=$1
+	set targ=$2
+else if ( $# == 1 ) then
+	if ( !(-f $1) ) then
+		set source=$1
+		set sourc = $source:t
+		if ( -d $source:h ) then
+			echo "No such file named $sourc in $source:h"
+			echo "Would you like to create $sourc here: $CWD?"
+			echo -n "yes or no:  "
+			set ans=$<
+			if ( $ans == "yes" ) then
+				touch $CWD/$sourc
+				if ( $status == 0 ) then
+					repeat 3 echo ""
+					ls -l $CWD/$sourc 
+					echo "Just created an empty file named $sourc at this location: \n $CWD"
+					repeat 2 echo ""
+				endif
+			endif
+		endif
+	endif
+else if ( $# == 0 || $# > 2 ) then
+	echo "\
+		This take two arguments for source file and target.  \
+		Path for source file has to exist or on will be created for you. \
+		Path for taget has to exist or one will be created for you. \
+		You will need write access to the taget directory. \
+		Minimum of one argument will merely create the file in the current working directory. \
+			\
+			\
+		"
+endif
+#		
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$       Excuse e[Kme.... Havent write to the file just yet....
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ls -ltr
+total 80
+-rw-r--r-- 1 Hannah None  177 Feb 13 20:33 Notes-on-Homework3.gdoc
+-rw-r--r-- 1 Hannah None  177 Feb 13 23:08 Unix-Homework3.gdoc
+-rwxr-xr-x 1 Hannah None  518 Feb 13 23:45 check_for_integers.sh
+-rwxr-xr-x 1 Hannah None  327 Feb 13 23:53 check_dir.sh
+-rwxr-xr-x 1 Hannah None 1050 Feb 14 14:45 check_source_cp.tcsh
+-rw-r--r-- 1 Hannah None    0 Feb 14 14:46 test-doesntExist.txt
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ vi check_source_cp.tcsh 
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ls -ltr
+total 80
+-rw-r--r-- 1 Hannah None  177 Feb 13 20:33 Notes-on-Homework3.gdoc
+-rw-r--r-- 1 Hannah None  177 Feb 13 23:08 Unix-Homework3.gdoc
+-rwxr-xr-x 1 Hannah None  518 Feb 13 23:45 check_for_integers.sh
+-rwxr-xr-x 1 Hannah None  327 Feb 13 23:53 check_dir.sh
+-rw-r--r-- 1 Hannah None    0 Feb 14 14:46 test-doesntExist.txt
+-rwxr-xr-x 1 Hannah None 1588 Feb 14 15:59 check_source_cp.tcsh
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ls -ltr[53Gcat check_source_cp.tcsh
+#!/usr/bin/tcsh -f
+
+# Simple file copy with some sanity checks
+#
+#
+
+set CWD = `pwd`
+if ( $# == 2 ) then
+	set sour=$1
+	set targ=$2
+	if ( !(-f $sour:h) && !(-d $targ) ) then
+		echo "No such file named $sour:h"
+		echo "No such directory $targ"
+		echo -n "Try again? (yes/no):  "
+		set ans=$<
+		if ( $ans == "yes" ) then
+			repeat 2 echo ""
+			echo -n "Enter full path and filename for the source file:  "
+			set sour=$<
+			echo -n "Enter valid path to copy the source file to:  "
+			set targ=$<
+		endif
+	else if ( !(-f $sour:h) ) then
+		echo ""
+else if ( $# == 1 ) then
+	if ( !(-f $1) ) then
+		set source=$1
+		set sourc = $source:t
+		if ( -d $source:h ) then
+			echo "No such file named $sourc in $source:h"
+			echo "Would you like to create $sourc here: $CWD?"
+			echo -n "yes or no:  "
+			set ans=$<
+			if ( $ans == "yes" ) then
+				touch $CWD/$sourc
+				if ( $status == 0 ) then
+					repeat 3 echo ""
+					ls -l $CWD/$sourc 
+					echo "Just created an empty file named $sourc at this location: \n $CWD"
+					repeat 2 echo ""
+				endif
+			endif
+		endif
+		if ( ! ( -d $source:h ) ) then
+			echo "No such directory $source:h"
+			echo "Please check path"
+		endif
+	else
+		cp $1 $CWD
+	endif
+else if ( $# == 0 || $# > 2 ) then
+	echo "\
+		This take two arguments for source file and target.  \
+		Path for source file has to exist or on will be created for you. \
+		Path for taget has to exist or one will be created for you. \
+		You will need write access to the taget directory. \
+		Minimum of one argument will merely create the file in the current working directory. \
+			\
+			\
+		"
+endif
+#		
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ cat check_source_cp.tcsh
+#!/usr/bin/tcsh -f
+
+# Simple file copy with some sanity checks
+#
+#
+
+set CWD = `pwd`
+if ( $# == 2 ) then
+	set sour=$1
+	set targ=$2
+	if ( !(-f $sour:h) && !(-d $targ) ) then
+		echo "No such file named $sour:h"
+		echo "No such directory $targ"
+		echo -n "Try again? (yes/no):  "
+		set ans=$<
+		if ( $ans == "yes" ) then
+			repeat 2 echo ""
+			echo -n "Enter full path and filename for the source file:  "
+			set sour=$<
+			echo -n "Enter valid path to copy the source file to:  "
+			set targ=$<
+		endif
+	else if ( !(-f $sour:h) ) then
+		echo ""
+else if ( $# == 1 ) then
+	if ( !(-f $1) ) then
+		set source=$1
+		set sourc = $source:t
+		if ( -d $source:h ) then
+			echo "No such file named $sourc in $source:h"
+			echo "Would you like to create $sourc here: $CWD?"
+			echo -n "yes or no:  "
+			set ans=$<
+			if ( $ans == "yes" ) then
+				touch $CWD/$sourc
+				if ( $status == 0 ) then
+					repeat 3 echo ""
+					ls -l $CWD/$sourc 
+					echo "Just created an empty file named $sourc at this location: \n $CWD"
+					repeat 2 echo ""
+				endif
+			endif
+		endif
+		if ( ! ( -d $source:h ) ) then
+			echo "No such directory $source:h"
+			echo "Please check path"
+		endif
+	else
+		cp $1 $CWD
+	endif
+else if ( $# == 0 || $# > 2 ) then
+	echo "\
+		This take two arguments for source file and target.  \
+		Path for source file has to exist or on will be created for you. \
+		Path for taget has to exist or one will be created for you. \
+		You will need write access to the taget directory. \
+		Minimum of one argument will merely create the file in the current working directory. \
+			\
+			\
+		"
+endif
+#		
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ cat check_source_cp.tcsh
+#!/usr/bin/tcsh -f
+
+# Simple file copy with some sanity checks
+#
+#
+
+set CWD = `pwd`
+if ( $# == 2 ) then
+	set sour=$1
+	set targ=$2
+	if ( !(-f $sour:h) && !(-d $targ) ) then
+		echo "No such file named $sour:h"
+		echo "No such directory $targ"
+		echo -n "Try again? (yes/no):  "
+		set ans=$<
+		if ( $ans == "yes" ) then
+			repeat 2 echo ""
+			echo -n "Enter full path and filename for the source file:  "
+			set sour=$<
+			echo -n "Enter valid path to copy the source file to:  "
+			set targ=$<
+		endif
+	else if ( !(-f $sour) ) then
+		echo "No such file named $sour:t in the directory $sourc:h"
+		echo -n "Try another source file? (yes/no):  "
+		set ans=$<
+		if ( $ans == "yes" ) then
+			repeat 2 echo ""
+			echo -n "Enter full path and filename for the source file:  "
+			set sour=$<
+			if ( !(-f $sour) ) then
+				repeat 2 echo ""
+				echo "No such file named $sour"
+			endif
+			cp -i $sour $targ
+		endif
+	else if ( !(-d $targ) ) then
+		echo "No such directory $targ"
+		echo -n "Try again? (yes/no):  "
+		set ans=$<
+		if ( $ans == "yes" ) then
+			repeat 2 echo ""
+			echo -n "Enter valid path to copy the source file to:  "
+			set targ=$<
+			if ( !(-f $targ) ) then
+				repeat 2 echo ""
+				echo "No such file named $targ"
+			endif
+			cp -i $sour $targ
+		endif
+	else
+		cp -i $sour $targ
+	endif
+else if ( $# == 1 ) then
+	if ( !(-f $1) ) then
+		set source=$1
+		set sourc = $source:t
+		if ( -d $source:h ) then
+			echo "No such file named $sourc in $source:h"
+			echo "Would you like to create $sourc here: $CWD?"
+			echo -n "yes or no:  "
+			set ans=$<
+			if ( $ans == "yes" ) then
+				touch $CWD/$sourc
+				if ( $status == 0 ) then
+					repeat 3 echo ""
+					ls -l $CWD/$sourc 
+					echo "Just created an empty file named $sourc at this location: \n $CWD"
+					repeat 2 echo ""
+				endif
+			endif
+		endif
+		if ( ! ( -d $source:h ) ) then
+			echo "No such directory $source:h"
+			echo "Please check path"
+		endif
+	else
+		cp $1 $CWD
+	endif
+else if ( $# == 0 || $# > 2 ) then
+	echo "\
+		This take two arguments for source file and target.  \
+		Path for source file has to exist or on will be created for you. \
+		Path for taget has to exist or one will be created for you. \
+		You will need write access to the taget directory. \
+		Minimum of one argument will merely create the file in the current working directory. \
+			\
+			\
+		"
+endif
+#		
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$     Take a good look befr[Kore testing again. Summary of how it went:
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$     Degenerate case s considered first. One g[Kagrument and what to do
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$     about that. Inter active ly prompt user for corrections. For 2 agrs,
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$     worst case se[Kcenario considered fr[Kirst and prompt co[K[Kfor correction of
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$     both source and target, if both indeed are faulty at the same tiom[K[Kme.
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$     The n if the source is bad yet they are n't boo[Kth bad, set source again
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$     interactively, otherwise[K[K[K[K[K[K[K[K[Kor it was the target path that need user intervention
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$      and finally, and else statemnt[K[K[Kment with no problem on eather[K[K[K[K[Kither end.
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$      Okay, I see another mistake in the first block of code. I should
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$      just show you how I saw it.[K, although UI[K[KI do see exactly what to edit.
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$      First , recall this little tidbit online about TCSH/..[K[K[K.....
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ !lynx
+lynx -dump -crawl https://sites.google.com/site/xiangyangsite/home/technical-tips/linux-unix/shell-programming/tcsh | head -120 | tail -7
+
+   set myfile = /usr/users/abcd1234/sorter.c
+   set head = $myfile:h    -- gets value /usr/users/abcd1234
+   set tail = $myfile:t    -- gets value sorter.c
+   set root = $myfile:r    -- gets value /usr/users/abcd1234/sorter
+   set extension = $myfile:e    -- gets value c
+
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$      F[KSo, I keep doing typos for testing "file" vs "path". Here's a test
+Unmatched '''.
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$      ...a test run showing the problem[K[K[K[K[K[K[Kcurrent proglem[K[K[K[Kblem. Notce[K[Kice that it prompted
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$      me for both source and tager[Kt and 2 agru[K[K[Krguments were give at the CLI.
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ rm test-doesntExist.txt 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ rm test.txt 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ./check_c[Ksource_cp.tcsh test-doesntExist.txt
+No such directory test-doesntExist.txt
+Please check path
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ./check_source_cp.tcsh test-doesntExist.txt[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+
+		This take two arguments for source file and target.  
+		Path for source file has to exist or on will be created for you. 
+		Path for taget has to exist or one will be created for you. 
+		You will need write access to the taget directory. 
+		Minimum of one argument will merely create the file in the current working directory. 
+			
+			
+		
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ./check_source_cp.tcsh $DOTREPO/test.txt
+No such file named test.txt in /home/Hannah/tooling/example-samples/bb_dirs/b_playonly/test/
+Would you like to create test.txt here: /home/Hannah/tooling/example-samples/bb_dirs/b_academia/HowardULAB/Junior-Jolly-June/rsyncd/Unix-Homework/Unix-Homework3?
+yes or no:  yes
+
+
+
+-rw-r--r-- 1 Hannah None 0 Feb 14  2019 /home/Hannah/tooling/example-samples/bb_dirs/b_academia/HowardULAB/Junior-Jolly-June/rsyncd/Unix-Homework/Unix-Homework3/test.txt
+Just created an empty file named test.txt at this location: 
+ /home/Hannah/tooling/example-samples/bb_dirs/b_academia/HowardULAB/Junior-Jolly-June/rsyncd/Unix-Homework/Unix-Homework3
+
+
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$        Heres where this[Kngs went wrong, testing a good source, bad target
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ./check_source_cp.tcsh $DOTREPO/
+__pycache__/           rcpro.zip              test__name__main__.py  use-test-module.py     
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ./check_source_cp.tcsh $DOTREPO/[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$        ..again, Cntrl-d for [K[Krom "file completoip[Kn[K[K[Kop[K[Kion" jsut to [K[K[K[K[Ks[Kust to s[Kcheck on a file
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ./check_source_cp.tcsh $DOTREPO/use-test-module.py 
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$         ...[Kand TAB for actual "file copl [1@ [1@s[1@h[1@e[1@l[1@l "file cop[Kmpletion" feature
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ./check_source_cp.tcsh $DOTREPO/use-test-module.py /home/global/warming
+No such file named /home/Hannah/tooling/example-samples/bb_dirs/b_playonly/test/
+No such directory /home/global/warming
+Try again? (yes/no):  no
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$        Obvioulsy[K[K[Ksly, this was caught in the first block of code. 
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$        Test shouuld[K[K[K[K[K[Ks[Kource [K[K[K[K[K[Kfor source wh[K[Kshould ahve been as gin[Kven, not file[K[K[K[Kthe file [K[K[K[K[K[K[Kjust its path/[K.
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$  
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ha[Kead -11 check_source_cp.tcsh 
+#!/usr/bin/tcsh -f
+
+# Simple file copy with some sanity checks
+#
+#
+
+set CWD = `pwd`
+if ( $# == 2 ) then
+	set sour=$1
+	set targ=$2
+	if ( !(-f $sour:h) && !(-d $targ) ) then
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ vi [K[Kls -ltr
+total 80
+-rw-r--r-- 1 Hannah None  177 Feb 13 23:08 Unix-Homework3.gdoc
+-rwxr-xr-x 1 Hannah None  518 Feb 13 23:45 check_for_integers.sh
+-rwxr-xr-x 1 Hannah None  327 Feb 13 23:53 check_dir.sh
+-rwxr-xr-x 1 Hannah None 2339 Feb 14 16:44 check_source_cp.tcsh
+-rw-r--r-- 1 Hannah None  177 Feb 14 16:54 Notes-on-Homework3.gdoc
+-rw-r--r-- 1 Hannah None    0 Feb 14 17:08 test.txt
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ vi check_source_cp.tcsh 
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ls -ltr[53Ghead -11 check_source_cp.tcsh[53G[K
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ls -ltr[53Ghead -11 check_source_cp.tcsh[53Gls -ltr[K
+total 80
+-rw-r--r-- 1 Hannah None  177 Feb 13 23:08 Unix-Homework3.gdoc
+-rwxr-xr-x 1 Hannah None  518 Feb 13 23:45 check_for_integers.sh
+-rwxr-xr-x 1 Hannah None  327 Feb 13 23:53 check_dir.sh
+-rw-r--r-- 1 Hannah None  177 Feb 14 16:54 Notes-on-Homework3.gdoc
+-rw-r--r-- 1 Hannah None    0 Feb 14 17:08 test.txt
+-rwxr-xr-x 1 Hannah None 2337 Feb 14 17:17 check_source_cp.tcsh
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ls -ltr[53Ghead -11 check_source_cp.tcsh
+#!/usr/bin/tcsh -f
+
+# Simple file copy with some sanity checks
+#
+#
+
+set CWD = `pwd`
+if ( $# == 2 ) then
+	set sour=$1
+	set targ=$2
+	if ( !(-f $sour) && !(-d $targ) ) then
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ head -11 check_source_cp.tcsh[53Gls -ltr[K[53Ghead -11 check_source_cp.tcsh[53G./check_source_cp.tcsh $DOTREPO/use-test-module.py /home/global/warming[85G[4Ptest.txt[K[85G[4@use-test-module.py /home/global/warming
+No such directory /home/global/warming
+Try again? (yes/no):  yes
+
+
+Enter valid path to copy the source file to:  /go/jump/in-a-lake/
+
+
+No such file named /go/jump/in-a-lake/
+cp: cannot create regular file '/go/jump/in-a-lake/': No such file or directory
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$     One cosmetice change: message should say no such directory.
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$     One logic change: put that cp[ [K co[Kommand inside "elde[K[Kse if", not outside.
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ head -50 check_source_cp.tcsh |tail
+		if ( $ans == "yes" ) then
+			repeat 2 echo ""
+			echo -n "Enter valid path to copy the source file to:  "
+			set targ=$<
+			if ( !(-f $targ) ) then
+				repeat 2 echo ""
+				echo "No such directory $targ"
+			endif
+			cp -i $sour $targ
+		endif
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$      Changed my mid[Knd and feel I only need and[K "else" befor cp command.
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ head -50 check_source_cp.tcsh | tail -11[P[1@1
+		if ( $ans == "yes" ) then
+			repeat 2 echo ""
+			echo -n "Enter valid path to copy the source file to:  "
+			set targ=$<
+			if ( !(-f $targ) ) then
+				repeat 2 echo ""
+				echo "No such directory $targ"
+			else
+				cp -i $sour $targ
+			endif
+		endif
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ head -51 check_source_cp.tcsh | tail -11[60G0 check_source_cp.tcsh | tail[K[53G./check_source_cp.tcsh $DOTREPO/use-test-module.py /home/global/warming
+No such directory /home/global/warming
+Try again? (yes/no):  no
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ./check_source_cp.tcsh $DOTREPO/use-test-module.py /home/global/warming
+No such directory /home/global/warming
+Try again? (yes/no):  yes
+
+
+Enter valid path to copy the source file to:  /go/jump/in-a-lake
+
+
+No such directory /go/jump/in-a-lake
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ./check_source_cp.tcsh $DOTREPO/use-test-module.py /home/global/warming
+No such directory /home/global/warming
+Try again? (yes/no):  yes
+
+
+Enter valid path to copy the source file to:  ../../../../Junior-Jolly-June/rsyncd/Unix-Homework/Unix-Homework3
+
+
+No such directory ../../../../Junior-Jolly-June/rsyncd/Unix-Homework/Unix-Homework3
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$      I should have see this one. Did you notie [Kve[K[Ke what I missed?>[K
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$      Again, I see the (-f) file test on what is a valide [K directory.
+Badly placed ()'s.
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$      Checking this to (-d) director test on target.
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ls -ltr
+total 80
+-rw-r--r-- 1 Hannah None  177 Feb 13 23:08 Unix-Homework3.gdoc
+-rwxr-xr-x 1 Hannah None  518 Feb 13 23:45 check_for_integers.sh
+-rwxr-xr-x 1 Hannah None  327 Feb 13 23:53 check_dir.sh
+-rw-r--r-- 1 Hannah None  177 Feb 14 16:54 Notes-on-Homework3.gdoc
+-rw-r--r-- 1 Hannah None    0 Feb 14 17:08 test.txt
+-rwxr-xr-x 1 Hannah None 2345 Feb 14 17:32 check_source_cp.tcsh
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ vi check_source_cp.tcsh 
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ !head
+head -51 check_source_cp.tcsh | tail -11
+		if ( $ans == "yes" ) then
+			repeat 2 echo ""
+			echo -n "Enter valid path to copy the source file to:  "
+			set targ=$<
+			if ( !(-d $targ) ) then
+				repeat 2 echo ""
+				echo "No such directory $targ"
+			else
+				cp -i $sour $targ
+			endif
+		endif
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ head -51 check_source_cp.tcsh | tail -11[53Gls -ltr[K[53GAgain, I see the ( -f ) file test on what is a valid directory.[53G./check_source_cp.tcsh $DOTREPO/use-test-module.py /home/global/warming
+No such directory /home/global/warming
+Try again? (yes/no):  yes
+
+
+Enter valid path to copy the source file to:  ../../../../Junior-Jolly-June/rsyncd/Unix-Homework/Unix-Homework3
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ls -ltr
+total 96
+-rw-r--r-- 1 Hannah None  177 Feb 13 23:08 Unix-Homework3.gdoc
+-rwxr-xr-x 1 Hannah None  518 Feb 13 23:45 check_for_integers.sh
+-rwxr-xr-x 1 Hannah None  327 Feb 13 23:53 check_dir.sh
+-rw-r--r-- 1 Hannah None  177 Feb 14 16:54 Notes-on-Homework3.gdoc
+-rw-r--r-- 1 Hannah None    0 Feb 14 17:08 test.txt
+-rwxr-xr-x 1 Hannah None 2345 Feb 14 17:38 check_source_cp.tcsh
+-rw-r--r-- 1 Hannah None  263 Feb 14 17:39 use-test-module.py
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$        s[KSo, there you go. But no fanfair. Shoudl [K[Kld do an ls -l on it too.
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$        Polishing up on this anmd[K[Kf[Kd moving on to the last testm [K: 2nd com[Kde blk
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ls -ltr[53G./check_source_cp.tcsh $DOTREPO/use-test-module.py /home/global/warming[53Ghead -51 check_source_cp.tcsh | tail -11[K[K2[P[1@2
+		if ( $ans == "yes" ) then
+			repeat 2 echo ""
+			echo -n "Enter valid path to copy the source file to:  "
+			set targ=$<
+			if ( !(-d $targ) ) then
+				repeat 2 echo ""
+				echo "No such directory $targ"
+			else
+				cp -i $sour $targ
+				ls -l $targ/$sour:t
+			endif
+		endif
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ head -52 check_source_cp.tcsh | tail -12[53Gls -ltr[K[53G./check_source_cp.tcsh $DOTREPO/use-test-module.py /home/global/warming[53G[K
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ rm use-test-module.py 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ rm use-test-module.py[53Ghead -52 check_source_cp.tcsh | tail -12[53Gls -ltr[K[53G./check_source_cp.tcsh $DOTREPO/use-test-module.py /home/global/warming
+No such directory /home/global/warming
+Try again? (yes/no):  no  yes
+
+
+Enter valid path to copy the source file to:  ../../../../Junior-Jolly-June/rsyncd/Unix-Homework/Unix-Homework3
+-rw-r--r-- 1 Hannah None 263 Feb 14  2019 ../../../../Junior-Jolly-June/rsyncd/Unix-Homework/Unix-Homework3/use-test-module.py
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ls -ltr
+total 96
+-rw-r--r-- 1 Hannah None  177 Feb 13 23:08 Unix-Homework3.gdoc
+-rwxr-xr-x 1 Hannah None  518 Feb 13 23:45 check_for_integers.sh
+-rwxr-xr-x 1 Hannah None  327 Feb 13 23:53 check_dir.sh
+-rw-r--r-- 1 Hannah None  177 Feb 14 16:54 Notes-on-Homework3.gdoc
+-rw-r--r-- 1 Hannah None    0 Feb 14 17:08 test.txt
+-rwxr-xr-x 1 Hannah None 2369 Feb 14 17:42 check_source_cp.tcsh
+-rw-r--r-- 1 Hannah None  263 Feb 14 17:43 use-test-module.py
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ rm use-test-module.py 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$       LAst combination [P[1@ast combination to test out, well combo of fault checks that it[Ks..
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$       Bade[K source with a good target....
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ./cje[K[K[K[K[K./check_source_cp.tcsh $DOTREPO/use-test-module.py [1@d[1@o[1@n[1@t[1@-use-[P[P[P[P[1@s[1@i[1@n[1@g[1@l[1@e-[1@-[1@u[1@s[1@e-[1@-[1@p[1@l[1@a[1@c[1@t[P[P[P[P[P[P-module.py  `pwd`
+sourc: Undefined variable.
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$       Ah O[KOh.....
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ head -26 check_c[Ksource_cp.tcsh |tail -4
+	else if ( !(-f $sour) ) then
+		echo "No such file named $sour:t in the directory $sourc:h"
+		echo -n "Try another source file? (yes/no):  "
+		set ans=$<
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$       Yu[Koul[K can tell ha[K[KI had di[Kecision issuess[K.... No big deal tho
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ head -26 check_source_cp.tcsh | tail -4
+	else if ( !(-f $sour) ) then
+		echo "No such file named $sour:t in the directory $sour:h"
+		echo -n "Try another source file? (yes/no):  "
+		set ans=$<
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$        Okay....
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ head -26 check_source_cp.tcsh | tail -4[53G./check_source_cp.tcsh $DOTREPO/dont-use-single-use-module.py `pwd`
+No such file named dont-use-single-use-module.py in the directory /home/Hannah/tooling/example-samples/bb_dirs/b_playonly/test/
+Try another source file? (yes/no):  yes
+
+
+Enter full path and filename for the source file:  /home/Hannah/tooling/example-samples/bb_dirs/b_playonly/test/
+
+
+No such file named /home/Hannah/tooling/example-samples/bb_dirs/b_playonly/test/
+cp: -r not specified; omitting directory '/home/Hannah/tooling/example-samples/bb_dirs/b_playonly/test/'
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$       Another oops... meant to use cp -i'[1@'cp -i' [K[K[K[K[K[K[K[K[Kprovide that filename itself. User ERROR
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$       I'll set[K[Ktill put oi[K[Kin the "esle[K[K[Klse" tp pres[Kceed the cp command like before
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$       Am[Knd a fo[K[Kdoof[K[K[K[Kgood warm-ful[Kzzt[Ky 'ls -l' to ch[K[Kso[Khow the final results. A[KSpaces to[K[K[K too
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ls tr[K[K-ltr
+total 80
+-rw-r--r-- 1 Hannah None  177 Feb 13 23:08 Unix-Homework3.gdoc
+-rwxr-xr-x 1 Hannah None  518 Feb 13 23:45 check_for_integers.sh
+-rwxr-xr-x 1 Hannah None  327 Feb 13 23:53 check_dir.sh
+-rw-r--r-- 1 Hannah None  177 Feb 14 16:54 Notes-on-Homework3.gdoc
+-rw-r--r-- 1 Hannah None    0 Feb 14 17:08 test.txt
+-rwxr-xr-x 1 Hannah None 2423 Feb 14 18:07 check_source_cp.tcsh
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ date
+Thu, Feb 14, 2019  6:07:23 PM
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ rm test.txt 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$         I thinks[K that just about does it.....
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ cat check_source_cp.tcsh 
+#!/usr/bin/tcsh -f
+
+# Simple file copy with some sanity checks
+#
+#
+
+set CWD = `pwd`
+if ( $# == 2 ) then
+	set sour=$1
+	set targ=$2
+	if ( !(-f $sour) && !(-d $targ) ) then
+		echo "No such file named $sour:h"
+		echo "No such directory $targ"
+		echo -n "Try again? (yes/no):  "
+		set ans=$<
+		if ( $ans == "yes" ) then
+			repeat 2 echo ""
+			echo -n "Enter full path and filename for the source file:  "
+			set sour=$<
+			echo -n "Enter valid path to copy the source file to:  "
+			set targ=$<
+		endif
+	else if ( !(-f $sour) ) then
+		echo "No such file named $sour:t in the directory $sour:h"
+		echo -n "Try another source file? (yes/no):  "
+		set ans=$<
+		if ( $ans == "yes" ) then
+			repeat 2 echo ""
+			echo -n "Enter full path and filename for the source file:  "
+			set sour=$<
+			if ( !(-f $sour) ) then
+				repeat 2 echo ""
+				echo "No such file named $sour"
+			else
+				cp -i $sour $targ
+				ls -l $targ/$sour:t
+			endif
+		endif
+	else if ( !(-d $targ) ) then
+		echo "No such directory $targ"
+		echo -n "Try again? (yes/no):  "
+		set ans=$<
+		if ( $ans == "yes" ) then
+			repeat 2 echo ""
+			echo -n "Enter valid path to copy the source file to:  "
+			set targ=$<
+			if ( !(-d $targ) ) then
+				repeat 2 echo ""
+				echo "No such directory $targ"
+			else
+				cp -i $sour $targ
+				ls -l $targ/$sour:t
+			endif
+		endif
+	else
+		cp -i $sour $targ
+		ls -l $targ/$sour:t
+	endif
+else if ( $# == 1 ) then
+	if ( !(-f $1) ) then
+		set source=$1
+		set sourc = $source:t
+		if ( -d $source:h ) then
+			echo "No such file named $sourc in $source:h"
+			echo "Would you like to create $sourc here: $CWD?"
+			echo -n "yes or no:  "
+			set ans=$<
+			if ( $ans == "yes" ) then
+				touch $CWD/$sourc
+				if ( $status == 0 ) then
+					repeat 3 echo ""
+					ls -l $CWD/$sourc 
+					echo "Just created an empty file named $sourc at this location: \n $CWD"
+					repeat 2 echo ""
+				endif
+			endif
+		endif
+		if ( ! ( -d $source:h ) ) then
+			echo "No such directory $source:h"
+			echo "Please check path"
+		endif
+	else
+		cp $1 $CWD
+	endif
+else if ( $# == 0 || $# > 2 ) then
+	echo "\
+		This take two arguments for source file and target.  \
+		Path for source file has to exist or on will be created for you. \
+		Path for taget has to exist or one will be created for you. \
+		You will need write access to the taget directory. \
+		Minimum of one argument will merely create the file in the current working directory. \
+			\
+			\
+		"
+endif
+#		
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ cat check_source_cp.tcsh[53Grm test.txt[K[53Gdate[Kls -ltr[53G./check_source_cp.tcsh $DOTREPO/dont-use-single-use-module.py `pwd`
+No such file named dont-use-single-use-module.py in the directory /home/Hannah/tooling/example-samples/bb_dirs/b_playonly/test/
+Try another source file? (yes/no):  yes
+
+
+Enter full path and filename for the source file:  /home/Hannah/tooling/example-samples/bb_dirs/b_playonly/test/use-test-module.py
+-rw-r--r-- 1 Hannah None 263 Feb 14  2019 /home/Hannah/tooling/example-samples/bb_dirs/b_academia/HowardULAB/Junior-Jolly-June/rsyncd/Unix-Homework/Unix-Homework3/use-test-module.py
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$      Now, what if everythign is all goo to [K[Kd to beginwi[K[K with and we're DONE!
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ./check_source_cp.tcsh $DOTREPO/dont-use-single-use-module.py `pwd`[P[P[P[P[P[P[P[P[P[P[P[P[P[P[P[P[P[P[P[P[P[P[P[P[P[P[P[P[P[1@u[1@s[1@e[1@-[1@t[1@e[1@s[1@t[1@-[1@m[1@o[1@d[1@u[1@l[1@e[1@.[1@p[1@y
+cp: overwrite '/home/Hannah/tooling/example-samples/bb_dirs/b_academia/HowardULAB/Junior-Jolly-June/rsyncd/Unix-Homework/Unix-Homework3/use-test-module.py'? yes
+-rw-r--r-- 1 Hannah None 263 Feb 14  2019 /home/Hannah/tooling/example-samples/bb_dirs/b_academia/HowardULAB/Junior-Jolly-June/rsyncd/Unix-Homework/Unix-Homework3/use-test-module.py
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$        That was '
+Unmatched '''.
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ That was '[1@ [1@ [1@ [1@ [1@ [1@ [1@ [1@ [1@ [1@ [1@ [1@ [P[P[P[P[PThat was 'cp -i' in action. Let[K[K[KLets remove it and [K[K[K, rinse a[K& repeat....
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ rm use-test-module.py 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ rm use-test-module.py[53GThat was '[K[53G./check_source_cp.tcsh $DOTREPO/use-test-module.py `pwd`
+-rw-r--r-- 1 Hannah None 263 Feb 14  2019 /home/Hannah/tooling/example-samples/bb_dirs/b_academia/HowardULAB/Junior-Jolly-June/rsyncd/Unix-Homework/Unix-Homework3/use-test-module.py
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ls -ltr
+total 96
+-rw-r--r-- 1 Hannah None  177 Feb 13 23:08 Unix-Homework3.gdoc
+-rwxr-xr-x 1 Hannah None  518 Feb 13 23:45 check_for_integers.sh
+-rwxr-xr-x 1 Hannah None  327 Feb 13 23:53 check_dir.sh
+-rw-r--r-- 1 Hannah None  177 Feb 14 16:54 Notes-on-Homework3.gdoc
+-rwxr-xr-x 1 Hannah None 2423 Feb 14 18:07 check_source_cp.tcsh
+-rw-r--r-- 1 Hannah None  263 Feb 14 18:11 use-test-module.py
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ls -ltr
+total 96
+-rwxr-xr-x 1 Hannah None  518 Feb 13 23:45 check_for_integers.sh
+-rwxr-xr-x 1 Hannah None  327 Feb 13 23:53 check_dir.sh
+-rw-r--r-- 1 Hannah None  263 Feb 14 18:11 use-test-module.py
+-rw-r--r-- 1 Hannah None  177 Feb 14 18:12 Notes-on-Homework3.gdoc
+-rwxr-xr-x 1 Hannah None 2970 Feb 14 18:27 check_source_cp.tcsh
+-rw-r--r-- 1 Hannah None  177 Feb 14 18:28 Unix-Homework3.gdoc
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ date
+Thu, Feb 14, 2019  6:30:13 PM
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ cat check_source_cp.tcsh 
+#!/usr/bin/tcsh -f
+
+# Simple file copy with some sanity checks
+#
+#
+
+set CWD = `pwd`
+if ( $# == 2 ) then
+	set sour=$1
+	set targ=$2
+	if ( !(-f $sour) && !(-d $targ) ) then
+		echo "No such file named $sour:h"
+		echo "No such directory $targ"
+		echo -n "Try again? (yes/no):  "
+		set ans=$<
+		if ( $ans == "yes" ) then
+			repeat 2 echo ""
+			echo -n "Enter full path and filename for the source file:  "
+			set sour=$<
+			if ( !(-f $sour) ) then
+				repeat 2 echo ""
+				echo "No such file named $sour"
+				echo "Source file does not exist, signed 'Hannah R Leonard <hrleonard00@gmail.com>'"
+			else
+				echo -n "Enter valid path to copy the source file to:  "
+				set targ=$<
+				if ( !(-d $targ) ) then
+					repeat 2 echo ""
+					echo "No such directory $targ"
+					echo "Source file does not exist, signed 'Hannah R Leonard <hrleonard00@gmail.com>'"
+				endif
+		endif
+	else if ( !(-f $sour) ) then
+		echo "No such file named $sour:t in the directory $sour:h"
+		echo -n "Try another source file? (yes/no):  "
+		set ans=$<
+		if ( $ans == "yes" ) then
+			repeat 2 echo ""
+			echo -n "Enter full path and filename for the source file:  "
+			set sour=$<
+			if ( !(-f $sour) ) then
+				repeat 2 echo ""
+				echo "No such file named $sour"
+				echo "Source file does not exist, signed 'Hannah R Leonard <hrleonard00@gmail.com>'"
+			else
+				cp -i $sour $targ
+				ls -l $targ/$sour:t
+			endif
+		endif
+	else if ( !(-d $targ) ) then
+		echo "No such directory $targ"
+		echo -n "Try again? (yes/no):  "
+		set ans=$<
+		if ( $ans == "yes" ) then
+			repeat 2 echo ""
+			echo -n "Enter valid path to copy the source file to:  "
+			set targ=$<
+			if ( !(-d $targ) ) then
+				repeat 2 echo ""
+				echo "No such directory $targ"
+				echo "Source file does not exist, signed 'Hannah R Leonard <hrleonard00@gmail.com>'"
+			else
+				cp -i $sour $targ
+				ls -l $targ/$sour:t
+			endif
+		endif
+	else
+		cp -i $sour $targ
+		ls -l $targ/$sour:t
+	endif
+else if ( $# == 1 ) then
+	if ( !(-f $1) ) then
+		set source=$1
+		set sourc = $source:t
+		if ( -d $source:h ) then
+			echo "No such file named $sourc in $source:h"
+			echo "Would you like to create $sourc here: $CWD?"
+			echo -n "yes or no:  "
+			set ans=$<
+			if ( $ans == "yes" ) then
+				touch $CWD/$sourc
+				if ( $status == 0 ) then
+					repeat 3 echo ""
+					ls -l $CWD/$sourc 
+					echo "Just created an empty file named $sourc at this location: \n $CWD"
+					repeat 2 echo ""
+				endif
+			endif
+		endif
+		if ( ! ( -d $source:h ) ) then
+			echo "No such directory $source:h"
+			echo "Please check path"
+		endif
+	else
+		cp $1 $CWD
+	endif
+else if ( $# == 0 || $# > 2 ) then
+	echo "\
+		This take two arguments for source file and target.  \
+		Path for source file has to exist or on will be created for you. \
+		Path for taget has to exist or one will be created for you. \
+		You will need write access to the taget directory. \
+		Minimum of one argument will merely create the file in the current working directory. \
+			\
+			\
+		"
+endif
+#		
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$       TRhou[K[K[K[Kought I[K[K[K[K[K[Khougt [Kht I was done. In a he[Kurry, I slammed a few changes that almoe[K[K[K[K[K[K[K[K[K. 
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$       Found the problem. First block of code, interc[Kactive test.
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$        Before correction:
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ hed[K[K[K
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ head -2[K34[K2 check_source_cp.tcsh |tail -17
+		if ( $ans == "yes" ) then
+			repeat 2 echo ""
+			echo -n "Enter full path and filename for the source file:  "
+			set sour=$<
+			if ( !(-f $sour) ) then
+				repeat 2 echo ""
+				echo "No such file named $sour"
+				echo "Source file does not exist, signed 'Hannah R Leonard <hrleonard00@gmail.com>'"
+			else
+				echo -n "Enter valid path to copy the source file to:  "
+				set targ=$<
+				if ( !(-d $targ) ) then
+					repeat 2 echo ""
+					echo "No such directory $targ"
+					echo "Source file does not exist, signed 'Hannah R Leonard <hrleonard00@gmail.com>'"
+				endif
+		endif
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$        After correctiop[Kn, e.g. [K[K[K[Ki.e. missing endif and missinf [Kg main action
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$        with 'cp -'[Ki' & 'ls -l' command in the '[K"else" code cl[K[Kblock.
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ head -32 check_source_cp.tcsh | tail -17
+		if ( $ans == "yes" ) then
+			repeat 2 echo ""
+			echo -n "Enter full path and filename for the source file:  "
+			set sour=$<
+			if ( !(-f $sour) ) then
+				repeat 2 echo ""
+				echo "No such file named $sour"
+				echo "Source file does not exist, signed 'Hannah R Leonard <hrleonard00@gmail.com>'"
+			else
+				echo -n "Enter valid path to copy the source file to:  "
+				set targ=$<
+				if ( !(-d $targ) ) then
+					repeat 2 echo ""
+					echo "No such directory $targ"
+					echo "Source file does not exist, signed 'Hannah R Leonard <hrleonard00@gmail.com>'"
+				else
+					cp -i $sour $targ
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ head -32 check_source_cp.tcsh | tail -17[K6[P[1@5
+			if ( !(-f $sour) ) then
+				repeat 2 echo ""
+				echo "No such file named $sour"
+				echo "Source file does not exist, signed 'Hannah R Leonard <hrleonard00@gmail.com>'"
+			else
+				echo -n "Enter valid path to copy the source file to:  "
+				set targ=$<
+				if ( !(-d $targ) ) then
+					repeat 2 echo ""
+					echo "No such directory $targ"
+					echo "Source file does not exist, signed 'Hannah R Leonard <hrleonard00@gmail.com>'"
+				else
+					cp -i $sour $targ
+					ls -l $targ/$sour:t
+				endif
+			endif
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ head -35 check_source_cp.tcsh | tail -16[53G[K      One final ru[Kound of testing. 
+One: Command not found.
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ./check_source_cp.tcsh
+
+		This take two arguments for source file and target.  
+		Path for source file has to exist or on will be created for you. 
+		Path for taget has to exist or one will be created for you. 
+		You will need write access to the taget directory. 
+		Minimum of one argument will merely create the file in the current working directory. 
+			
+			
+		
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ./check_source_cp.tcsh !/[K[K~/test .
+-rw-r--r-- 1 Hannah None 3173 Feb 14  2019 ./test
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ls -l
+total 112
+-rwxr-xr-x 1 Hannah None  327 Feb 13 23:53 check_dir.sh
+-rwxr-xr-x 1 Hannah None  518 Feb 13 23:45 check_for_integers.sh
+-rwxr-xr-x 1 Hannah None 3054 Feb 14 22:51 check_source_cp.tcsh
+-rw-r--r-- 1 Hannah None  177 Feb 14 18:31 Notes-on-Homework3.gdoc
+-rw-r--r-- 1 Hannah None 3173 Feb 14 23:19 test
+-rw-r--r-- 1 Hannah None    0 Feb 14 23:16 test-preserved
+-rw-r--r-- 1 Hannah None  177 Feb 14 21:54 Unix-Homework3.gdoc
+-rw-r--r-- 1 Hannah None  263 Feb 14 18:11 use-test-module.py
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ls -l /usr/local
+total 16
+drwxr-xr-x 1 Hannah None   0 Dec 11 06:19 aws
+drwxr-xr-x 1 Hannah None   0 Nov 20 14:23 bin
+drwxr-xr-x 1 Hannah None   0 Dec 11 06:22 dwnld
+drwxr-xr-x 1 Hannah None   0 Nov 20 14:23 etc
+drwxr-xr-x 1 Hannah None   0 Nov 20 14:23 lib
+-rw-r--r-- 1 Hannah None 263 Dec  5 21:58 use-test-module.py
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ./check_source_cp.tcsh test-preserved  /usr/local
+-rw-r--r-- 1 Hannah None 0 Feb 14  2019 /usr/local/test-preserved
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ls -l /usr/lc[Kocal
+total 16
+drwxr-xr-x 1 Hannah None   0 Dec 11 06:19 aws
+drwxr-xr-x 1 Hannah None   0 Nov 20 14:23 bin
+drwxr-xr-x 1 Hannah None   0 Dec 11 06:22 dwnld
+drwxr-xr-x 1 Hannah None   0 Nov 20 14:23 etc
+drwxr-xr-x 1 Hannah None   0 Nov 20 14:23 lib
+-rw-r--r-- 1 Hannah None   0 Feb 14 23:22 test-preserved
+-rw-r--r-- 1 Hannah None 263 Dec  5 21:58 use-test-module.py
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ./check_source_cp.tcsh /usr/local/use-test-module.py `pwd`
+cp: overwrite '/home/Hannah/tooling/example-samples/bb_dirs/b_academia/HowardULAB/Junior-Jolly-June/rsyncd/Unix-Homework/Unix-Homework3/use-test-module.py'? 
+-rw-r--r-- 1 Hannah None 263 Feb 14 18:11 /home/Hannah/tooling/example-samples/bb_dirs/b_academia/HowardULAB/Junior-Jolly-June/rsyncd/Unix-Homework/Unix-Homework3/use-test-module.py
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ls[K[Kld -l[K[K[Ks -=[Kl
+total 112
+-rwxr-xr-x 1 Hannah None  327 Feb 13 23:53 check_dir.sh
+-rwxr-xr-x 1 Hannah None  518 Feb 13 23:45 check_for_integers.sh
+-rwxr-xr-x 1 Hannah None 3054 Feb 14 22:51 check_source_cp.tcsh
+-rw-r--r-- 1 Hannah None  177 Feb 14 18:31 Notes-on-Homework3.gdoc
+-rw-r--r-- 1 Hannah None 3173 Feb 14 23:19 test
+-rw-r--r-- 1 Hannah None    0 Feb 14 23:16 test-preserved
+-rw-r--r-- 1 Hannah None  177 Feb 14 21:54 Unix-Homework3.gdoc
+-rw-r--r-- 1 Hannah None  263 Feb 14 18:11 use-test-module.py
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ls -l[53G./check_source_cp.tcsh /usr/local/use-test-module.py `pwd`
+cp: overwrite '/home/Hannah/tooling/example-samples/bb_dirs/b_academia/HowardULAB/Junior-Jolly-June/rsyncd/Unix-Homework/Unix-Homework3/use-test-module.py'? yes
+-rw-r--r-- 1 Hannah None 263 Feb 14  2019 /home/Hannah/tooling/example-samples/bb_dirs/b_academia/HowardULAB/Junior-Jolly-June/rsyncd/Unix-Homework/Unix-Homework3/use-test-module.py
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ./check_source_cp.tcsh /usr/local/use-test-module.py `pwd`[53Gls -l[K
+total 112
+-rwxr-xr-x 1 Hannah None  327 Feb 13 23:53 check_dir.sh
+-rwxr-xr-x 1 Hannah None  518 Feb 13 23:45 check_for_integers.sh
+-rwxr-xr-x 1 Hannah None 3054 Feb 14 22:51 check_source_cp.tcsh
+-rw-r--r-- 1 Hannah None  177 Feb 14 18:31 Notes-on-Homework3.gdoc
+-rw-r--r-- 1 Hannah None 3173 Feb 14 23:19 test
+-rw-r--r-- 1 Hannah None    0 Feb 14 23:16 test-preserved
+-rw-r--r-- 1 Hannah None  177 Feb 14 21:54 Unix-Homework3.gdoc
+-rw-r--r-- 1 Hannah None  263 Feb 14 23:24 use-test-module.py
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ rm use-test-module.py 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ rm test-preserved 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ./check_source_cp.tcsh test /usr[Ker/focal
+No such directory /user/focal
+Try again? (yes/no):  no
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ./check_source_cp.tcsh test /user/focal
+No such directory /user/focal
+Try again? (yes/no):  yes
+
+
+Enter valid path to copy the source file to:  /global/warming
+
+
+No such directory /global/warming
+Source file does not exist, signed 'Hannah R Leonard <hrleonard00@gmail.com>'
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ./check_source_cp.tcsh test /user/focal
+No such directory /user/focal
+Try again? (yes/no):  yes
+
+
+Enter valid path to copy the source file to:  /usr/local
+-rw-r--r-- 1 Hannah None 3173 Feb 14  2019 /usr/local/test
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ls -l 
+total 96
+-rwxr-xr-x 1 Hannah None  327 Feb 13 23:53 check_dir.sh
+-rwxr-xr-x 1 Hannah None  518 Feb 13 23:45 check_for_integers.sh
+-rwxr-xr-x 1 Hannah None 3054 Feb 14 22:51 check_source_cp.tcsh
+-rw-r--r-- 1 Hannah None  177 Feb 14 18:31 Notes-on-Homework3.gdoc
+-rw-r--r-- 1 Hannah None 3173 Feb 14 23:19 test
+-rw-r--r-- 1 Hannah None  177 Feb 14 21:54 Unix-Homework3.gdoc
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ls -l /usr/local
+total 32
+drwxr-xr-x 1 Hannah None    0 Dec 11 06:19 aws
+drwxr-xr-x 1 Hannah None    0 Nov 20 14:23 bin
+drwxr-xr-x 1 Hannah None    0 Dec 11 06:22 dwnld
+drwxr-xr-x 1 Hannah None    0 Nov 20 14:23 etc
+drwxr-xr-x 1 Hannah None    0 Nov 20 14:23 lib
+-rw-r--r-- 1 Hannah None 3173 Feb 14 23:27 test
+-rw-r--r-- 1 Hannah None    0 Feb 14 23:22 test-preserved
+-rw-r--r-- 1 Hannah None  263 Dec  5 21:58 use-test-module.py
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ./check_source_cp.tcsh /user/focal/test-preserved  /global/warming
+No such file named /user/focal
+No such directory /global/warming
+Try again? (yes/no):  yes
+
+
+Enter full path and filename for the source file:  /user    go/jump/in-a-lake/test-reserverd ed[D[D[D[D[D[D[D[D[D[Dp[C[C[C[C[C[C[D[D[D[D[D[Dreservered      rved  
+
+
+No such file named /go/jump/in-a-lake/test-reservered[D[D[D[D[D[D[D[D[D[Dp[C[C[C[C[C[C[D[D[D[D[D[Dreserved
+Source file does not exist, signed 'Hannah R Leonard <hrleonard00@gmail.com>'
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$         Just modify[Ke[Kei[K[Kied message to refernce $sour:t instead og [Kf :h^C[K[Kh
+[K[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ head -l[K12 check_source_cp.tcsh |tail -1
+		echo "No such file named $sour:t"
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ./check_source_cp.tcsh /usr[Ker/focal/test-preserved /global/warming
+No such file named test-preserved
+No such directory /global/warming
+Try again? (yes/no):  yes
+
+
+Enter full path and filename for the source file:  /usrt /local/test-preserved
+Enter valid path to copy the source file to:  /go/jump/in-a-lake/
+
+
+No such directory /go/jump/in-a-lake/
+Source file does not exist, signed 'Hannah R Leonard <hrleonard00@gmail.com>'
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ./check_source_cp.tcsh /user/focal/test-preserved /global/warming
+No such file named test-preserved
+No such directory /global/warming
+Try again? (yes/no):  yes
+
+
+Enter full path and filename for the source file:  /usr/local/test-preserved
+Enter valid path to copy the source file to:  /opt
+-rw-r--r-- 1 Hannah None 0 Feb 14  2019 /opt/test-preserved
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ld -l[K[Ks[K[Ks -l /opt
+total 0
+drwxr-xr-x 1 Hannah None 0 Nov 27 20:04 gcc-tools
+-rw-r--r-- 1 Hannah None 0 Feb 14 23:43 test-preserved
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ./check_source_cp.tcsh /opt/test-preserved  `[K$PWD
+-rw-r--r-- 1 Hannah None 0 Feb 14  2019 /home/Hannah/tooling/example-samples/bb_dirs/b_academia/HowardULAB/Junior-Jolly-June/rsyncd/Unix-Homework/Unix-Homework3/test-preserved
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ls -l
+total 96
+-rwxr-xr-x 1 Hannah None  327 Feb 13 23:53 check_dir.sh
+-rwxr-xr-x 1 Hannah None  518 Feb 13 23:45 check_for_integers.sh
+-rwxr-xr-x 1 Hannah None 3054 Feb 14 23:30 check_source_cp.tcsh
+-rw-r--r-- 1 Hannah None  177 Feb 14 18:31 Notes-on-Homework3.gdoc
+-rw-r--r-- 1 Hannah None 3173 Feb 14 23:19 test
+-rw-r--r-- 1 Hannah None    0 Feb 14 23:49 test-preserved
+-rw-r--r-- 1 Hannah None  177 Feb 14 21:54 Unix-Homework3.gdoc
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ cat check_source_cp.tcsh
+#!/usr/bin/tcsh -f
+
+# Simple file copy with some sanity checks
+#
+#
+
+set CWD = `pwd`
+if ( $# == 2 ) then
+	set sour=$1
+	set targ=$2
+	if ( !(-f $sour) && !(-d $targ) ) then
+		echo "No such file named $sour:t"
+		echo "No such directory $targ"
+		echo -n "Try again? (yes/no):  "
+		set ans=$<
+		if ( $ans == "yes" ) then
+			repeat 2 echo ""
+			echo -n "Enter full path and filename for the source file:  "
+			set sour=$<
+			if ( !(-f $sour) ) then
+				repeat 2 echo ""
+				echo "No such file named $sour"
+				echo "Source file does not exist, signed 'Hannah R Leonard <hrleonard00@gmail.com>'"
+			else
+				echo -n "Enter valid path to copy the source file to:  "
+				set targ=$<
+				if ( !(-d $targ) ) then
+					repeat 2 echo ""
+					echo "No such directory $targ"
+					echo "Source file does not exist, signed 'Hannah R Leonard <hrleonard00@gmail.com>'"
+				else
+					cp -i $sour $targ
+					ls -l $targ/$sour:t
+				endif
+			endif
+		endif
+	else if ( !(-f $sour) ) then
+		echo "No such file named $sour:t in the directory $sour:h"
+		echo -n "Try another source file? (yes/no):  "
+		set ans=$<
+		if ( $ans == "yes" ) then
+			repeat 2 echo ""
+			echo -n "Enter full path and filename for the source file:  "
+			set sour=$<
+			if ( !(-f $sour) ) then
+				repeat 2 echo ""
+				echo "No such file named $sour"
+				echo "Source file does not exist, signed 'Hannah R Leonard <hrleonard00@gmail.com>'"
+			else
+				cp -i $sour $targ
+				ls -l $targ/$sour:t
+			endif
+		endif
+	else if ( !(-d $targ) ) then
+		echo "No such directory $targ"
+		echo -n "Try again? (yes/no):  "
+		set ans=$<
+		if ( $ans == "yes" ) then
+			repeat 2 echo ""
+			echo -n "Enter valid path to copy the source file to:  "
+			set targ=$<
+			if ( !(-d $targ) ) then
+				repeat 2 echo ""
+				echo "No such directory $targ"
+				echo "Source file does not exist, signed 'Hannah R Leonard <hrleonard00@gmail.com>'"
+			else
+				cp -i $sour $targ
+				ls -l $targ/$sour:t
+			endif
+		endif
+	else
+		cp -i $sour $targ
+		ls -l $targ/$sour:t
+	endif
+else if ( $# == 1 ) then
+	if ( !(-f $1) ) then
+		set source=$1
+		set sourc = $source:t
+		if ( -d $source:h ) then
+			echo "No such file named $sourc in $source:h"
+			echo "Would you like to create $sourc here: $CWD?"
+			echo -n "yes or no:  "
+			set ans=$<
+			if ( $ans == "yes" ) then
+				touch $CWD/$sourc
+				if ( $status == 0 ) then
+					repeat 3 echo ""
+					ls -l $CWD/$sourc 
+					echo "Just created an empty file named $sourc at this location: \n $CWD"
+					repeat 2 echo ""
+				endif
+			endif
+		endif
+		if ( ! ( -d $source:h ) ) then
+			echo "No such directory $source:h"
+			echo "Please check path"
+		endif
+	else
+		cp $1 $CWD
+		ls -l $CWD/$1:t
+	endif
+else if ( $# == 0 || $# > 2 ) then
+	echo "\
+		This take two arguments for source file and target.  \
+		Path for source file has to exist or on will be created for you. \
+		Path for taget has to exist or one will be created for you. \
+		You will need write access to the taget directory. \
+		Minimum of one argument will merely create the file in the current working directory. \
+			\
+			\
+		"
+endif
+#		
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ./check_source_cp.tcsh /user[K[Kurper/got[K[K[Kgame-o-thron[Kwn/use-test-module.py
+No such directory /usurper/game-o-thrown
+Please check path
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ./check_source_cp.tcsh /usurper/game-o-thrown/use-test-module.py[P[P[P[P[P[P[P[P[P[P[P[P[P[P[P[P[P[P[P[1@r/[1@/[1@l[1@o[1@c[1@a[1@l
+-rw-r--r-- 1 Hannah None 263 Feb 15  2019 /home/Hannah/tooling/example-samples/bb_dirs/b_academia/HowardULAB/Junior-Jolly-June/rsyncd/Unix-Homework/Unix-Homework3/use-test-module.py
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ls -l use-test-module.py
+-rw-r--r-- 1 Hannah None 263 Feb 15 00:26 use-test-module.py
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ 
+[Hannah@Computer2 ~/<7>Unix-Homework/Unix-Homework3]$ ^Dexit
+]0;~
+[32mHannah@Computer2 [33m~[0m
+$ exit
+
+Script done on Fri, Feb 15, 2019 12:57:28 AM
