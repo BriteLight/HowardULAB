@@ -1,0 +1,88 @@
+Suppose a program has to maintain a list of flights departing in the next few hours, and we have decided to implement it as a doubly linked list. A node of the list can be represented as:
+
+struct NODE {
+ FLIGHT flight;
+ NODE *next;
+ NODE *previous;
+};
+
+struct FLIGHT {
+ int flightNum;
+ string destination;
+};
+
+Create a doubly linked list to hold the initial flight information:
+Houston, Chicago, Arizona, Baltimore, Detroit, Denver, Houston
+
+Your program must implement the following methods: Append, Prepend, Remove, InsertAfter, Print, and PrintReverse
+
+    The Append function, appends data to the end of the list
+
+    The Prepend function, prepends data to the beginning of the list
+
+    The Remove function, removes a node from the list and adjusts the length of the list
+
+    The Print function must print the entire list
+
+    The PrintReverse function must print the entire list in reverse
+
+    Prepend Dallas to the list
+
+    Remove Arizona from the list
+
+    Append Kansas City to the list
+
+    Insert Minneapolis after Kansas City in the list
+
+Print the flight record using the Example of how your output is supposed to look:
+
+Example:
+Flight Records for HowardAir Flight CSCI0136:
+1. Dallas to Houston
+2. Houston to Chicago
+3. Chicago to Baltimore
+4. Baltimore to Detroit
+5. Detroit to Denver
+6. Denver to Kansas City
+7. Kansas City to Minneapolis
+8. Minneapolis to Dallas
+Print the flight record in reverse using the Example of how your output is supposed to look:
+
+
+Works Cited: 
+https://www.geeksforgeeks.org/delete-a-node-in-a-doubly-linked-list/ 
+
+https://stackoverflow.com/questions/22800954/printing-doubly-linked-lists //printing 
+
+
+
+Flight.push(&head, "Houston"); 
+Flight.push(&head, "Chicago"); 
+Flight.push(&head, "Arizona"); 
+Flight.push(&head, "Baltimore");  
+Flight.push(&head, "Detroit"); 
+Flight.push(&head, "Denver"); 
+
+
+void list::printList(struct NODE* NODE){  
+    struct NODE* last;  
+    cout<<"Flight Records for HowardAir Flight CSCI0136:"<<endl;
+    while (NODE != NULL) {  
+        cout<< NODE->data << " to "<< NODE->data<<endl;  
+        last = NODE;    
+        NODE = NODE->next;
+        //cout<<NODE->data<<endl;
+    }  
+      cout<<" "<<endl; 
+}
+
+void list::printListReverse(struct NODE* NODE){    
+    struct NODE* last;  
+    cout<<"Reverse Flight Records for HowardAir Flight CSCI0136:"<<endl;  
+    while (last != NULL) {  
+        cout<<last->data<< " to ";  
+        last = last->prev;  
+        cout<<last->data<<endl;
+    }  
+}  
+  

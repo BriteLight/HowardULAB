@@ -1,0 +1,21 @@
+Assignment #5
+
+                   Process Creation / Termination
+                   - - - - - - - - - - - - - - - -
+
+Write 2 scripts:
+
+  1. create_process.sh that will generate a random number of
+     processes (between 10 and 30) with randmon priorities, and
+     list process IDs and corresponding priorities in a text file,
+     processes.txt
+     (50 points)
+
+     Use: RANDOM environment variable to generate random numbers
+
+  2. kill_process.sh that will modify active processes such that it
+     kills the process with even process IDs and increases the priority
+     of the processes by 3 with odd process IDs.
+     (50 points)
+
+     nice and renice commands may be used to establish and reset process priorities.
