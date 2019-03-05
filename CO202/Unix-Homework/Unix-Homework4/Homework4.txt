@@ -1,0 +1,21 @@
+
+
+         Script Programming -- Grep, Piping, and Sort
+         ============================================
+
+  1 - Read input file with words and characters
+      a: write 3 letter words in a new file -- 3_letter-words_file
+      b: write 4 letter words to a new file -- 4_letter-words_file
+  2 - Eliminate duplicate words
+      a: 3_letter-words_file -> 3_letter-words_file_no_dups
+      b: 4_letter-words_file -> 4_letter-words_file_no_dups
+  3 - Create new directories
+      a: Your_Lastname3 containing 3_letter-words_file_no_dups
+      b: Your_Lastname4 containing 4_letter-words_file_no_dups
+  4 - Sort
+      a: 3_letter-words_file_no_dups -> 3_letter-words_sorted
+      b: 4_letter-words_file_no_dups -> 4_letter-words_sorted
+
+
+
+

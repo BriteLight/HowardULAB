@@ -1,0 +1,8 @@
+How to Right Align Things: 
+https://stackoverflow.com/questions/5201619/right-justifying-output-stream-in-c 
+
+Pointers: 
+http://www.cplusplus.com/doc/tutorial/pointers/ 
+
+Even Odd:
+https://www.sanfoundry.com/cpp-program-check-given-integer-even-or-odd/ 

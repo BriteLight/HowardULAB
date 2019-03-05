@@ -1,0 +1,363 @@
+
+
+      See "more_on_4-letter_process" for the 4_letter-word_file side of things.
+      And that file should be view at a SHELL using the "more" command, e.g. [  more  more_on_4-letter_process  ]
+
+
+
+foreach word ( hsd nemdkf nsm akskm ned snsba owk ajksd esj ens )
+foreach? if ( `echo $word | wc -c` == 4 ) then
+foreach?    echo $word
+foreach? endif
+foreach? end
+hsd
+nsm
+ned
+owk
+esj
+ens
+
+
+
+
+foreach word ( `man look` )
+foreach? if ( `echo $word | wc -c` == 4 ) then
+foreach?    echo $word >> 3_letter-words_file_no_dups
+foreach?    echo $word
+foreach? endif
+foreach? end
+echo: No match.
+echo: No match.
+The
+any
+the
+was
+the
+not
+the
+are
+and
+the
+-a,
+Use
+the
+-d,
+Use
+set
+and
+
+
+
+
+
+    The idea of piping the output to sed is to clean up the contents of the 3-letter file. Look at this one. Still has one find with a colon. 
+
+foreach word ( `man look | sed 's/,/ /g'` )
+foreach? if ( `echo $word |wc -c` == 4 ) then
+foreach?    echo $word >> 3_letter-words_file
+foreach?    echo $word
+foreach? endif
+foreach? end
+echo: No match.
+echo: No match.
+The
+any
+the 
+was
+the
+not
+the
+are
+and
+the
+Use
+the
+Use
+set
+and
+and
+are
+set
+for
+the
+the
+and
+the
+are
+and
+and
+The
+one
+and
+and
+-t:
+The
+has
+the
+the
+the
+SEE
+The
+The
+the
+and
+
+
+
+
+
+
+
+
+
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ rm 3_letter-words_file_no_dups
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ mv 3_letter-words_file Orig_3_letter-words_file
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ chmod a+x tri-word.sh
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ ./tri-word.sh
+The
+any
+the
+was
+the
+not
+the
+are
+and
+the
+Use
+the
+Use
+set
+and
+and
+are
+set
+for
+the
+the
+and
+the
+are
+and
+and
+The
+one
+and
+and
+-t:
+The
+has
+the
+the
+the
+SEE
+The
+The
+the
+and
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$
+
+
+
+
+========================================================
+#!/bin/bash
+
+for word in $(man look | sed 's/,/ /g');
+do
+        if [ `echo $word | wc -c` == 4 ]; then
+                echo $word >> 3_letter-words_file
+                echo $word;
+        fi
+done
+========================================================
+
+
+
+
+
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ touch 3_letter-words_file_no_dups
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ foreach word ( `cat 3_letter-words_file` )
+foreach? grep -w $word 3_letter-words_file_no_dups
+foreach? if ( $status != 0 ) then
+foreach?   echo $word >> 3_letter-words_file_no_dups
+foreach? endif
+foreach? end
+the
+the
+the
+the
+Use
+and
+and
+are
+set
+the
+the
+and
+the
+are
+and
+and
+The
+and
+and
+grep: unknown option -- t
+Usage: grep [OPTION]... PATTERN [FILE]...
+Try 'grep --help' for more information.
+The
+the
+the
+the
+The
+The
+the
+and
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ cat 3_letter-words_file_no_dups
+The
+any
+the
+was
+not
+are
+and
+Use
+set
+for
+one
+-t:
+has
+SEE
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$
+
+
+
+
+foreach word ( `cat 3_letter-words_file` )
+foreach? grep -w $word 3_letter-words_file_no_dups >> /dev/null
+foreach? if ( $status != 0 ) then
+foreach?   echo $word >> 3_letter-words_file_no_dups
+foreach? endif
+foreach? end
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$
+
+   Now, to get some Standard Output for the non-duplicate 3-letter words that get written to the new file, add that extra “echo”.
+
+   Let’s see the current output before wiping it clean again.
+
+
+[Brad@Computer2 ~/<4>HowardULAB/Junior-Jolly-June]$
+[Brad@Computer2 ~/<4>HowardULAB/Junior-Jolly-June]$ cat /dev/null rsyncd/Unix-Homework/Unix-Homework4/3_letter-words_file_no_dups
+The
+any
+the
+was
+not
+are
+and
+Use
+set
+for
+one
+has
+SEE
+[Brad@Computer2 ~/<4>HowardULAB/Junior-Jolly-June]$ cp /dev/null rsyncd/Unix-Homework/Unix-Homework4/3_letter-words_file_no_dups
+[Brad@Computer2 ~/<4>HowardULAB/Junior-Jolly-June]$ cat /dev/null rsyncd/Unix-Homework/Unix-Homework4/3_letter-words_file_no_dups
+
+
+  Okay…
+
+
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ foreach word ( `cat 3_letter-words_file` )
+foreach? grep -w $word 3_letter-words_file_no_dups >> /dev/null
+foreach? if ( $status != 0 ) then
+foreach?   echo $word >> 3_letter-words_file_no_dups
+foreach?   echo $word
+foreach? endif
+foreach? end
+The
+any
+the
+was
+not
+are
+and
+Use
+set
+for
+one
+has
+SEE
+
+      Now, we’re ready to create a full script. BASH again? Not this time. I’m doing it with TCSH.
+
+
+
+
+========================================================
+#!/bin/tcsh -f
+
+foreach word ( `cat 3_letter-words_file` )
+        grep -w $word 3_letter-words_file_no_dups >> /dev/null
+        if ( $status != 0 ) then
+                echo $word >> 3_letter-words_file_no_dups
+                echo $word
+        endif
+end
+========================================================
+
+
+
+[Brad@Computer2 ~/<4>HowardULAB/Junior-Jolly-June]$
+[Brad@Computer2 ~/<4>HowardULAB/Junior-Jolly-June]$ cp /dev/null rsyncd/Unix-Homework/Unix-Homework4/3_letter-words_file_no_dups
+
+
+   Just as expected!
+
+
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ ./tri-word-no-dup.tcsh
+The
+any
+the
+was
+not
+are
+and
+Use
+set
+for
+one
+has
+SEE
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$
+
+
+
+   Part 3:
+  ====
+
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ mkdir Leonard3
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ cp 3_letter-words_file_no_dups Leonard3
+
+  Part4:
+ ====
+
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ sort Leonard3/3_letter-words_file_no_dups  > Leonard3/3_letter-words_sorted
+
+[Brad@Computer2 ~/<7>Unix-Homework/Unix-Homework4]$ cat Leonard3/3_letter-words_sorted
+and
+any
+are
+for
+has
+not
+one
+SEE
+set
+the
+The
+Use
+was
+
