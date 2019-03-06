@@ -1,0 +1,143 @@
+
+Assignment #5
+
+                   Process Creation / Termination
+                   - - - - - - - - - - - - - - - -
+
+Write 2 scripts:
+
+  1. create_process.sh that will generate a random number of
+     processes (between 10 and 30) with randmon priorities, and
+     list process IDs and corresponding priorities in a text file,
+     processes.txt
+     (50 points)
+
+     Use: RANDOM environment variable to generate random numbers
+
+  2. kill_process.sh that will modify active processes such that it
+     kills the process with even process IDs and increases the priority
+     of the processes by 3 with odd process IDs.
+     (50 points)
+
+     nice and renice commands may be used to establish and reset process priorities.
+
+
+
+root@ip-172-31-25-35:~#
+root@ip-172-31-25-35:~# ps -elf |head -1 ;ps -elf |grep " python3" |grep -v grep
+F S UID        PID  PPID  C PRI  NI ADDR SZ WCHAN  STIME TTY          TIME CMD
+0 T root     18940 18818  0  80   0 -  9226 signal 04:59 pts/0    00:00:00 python3
+4 T root     19263 18818  0  77  -3 -  9226 signal 05:02 pts/0    00:00:00 python3
+root@ip-172-31-25-35:~#
+root@ip-172-31-25-35:~# expr 80 - 83
+-3
+root@ip-172-31-25-35:~# expr 77 - 83
+-6
+root@ip-172-31-25-35:~# for n ( 80 77 ) ; do expr $n - 83; done
+bash: syntax error near unexpected token `('
+root@ip-172-31-25-35:~#
+root@ip-172-31-25-35:~#
+root@ip-172-31-25-35:~# for n " 80 77 " ; do expr $n - 83; done
+bash: syntax error near unexpected token `" 80 77 "'
+root@ip-172-31-25-35:~#
+root@ip-172-31-25-35:~#
+root@ip-172-31-25-35:~# for n [ 80 77 ] ; do expr $n - 83; done
+bash: syntax error near unexpected token `['
+root@ip-172-31-25-35:~#
+root@ip-172-31-25-35:~#
+root@ip-172-31-25-35:~# for n in ( 80 77 ) ; do expr $n - 83; done
+bash: syntax error near unexpected token `('
+root@ip-172-31-25-35:~# for n ub [ 80 77 ] ; do expr $n - 83; done
+bash: syntax error near unexpected token `ub'
+root@ip-172-31-25-35:~# for n in [ 80 77 ] ; do expr $n - 83; done
+expr: non-integer argument
+-3
+-6
+expr: non-integer argument
+root@ip-172-31-25-35:~#
+root@ip-172-31-25-35:~#
+root@ip-172-31-25-35:~#
+root@ip-172-31-25-35:~#
+root@ip-172-31-25-35:~# echo $n
+]
+root@ip-172-31-25-35:~#
+root@ip-172-31-25-35:~#
+root@ip-172-31-25-35:~# for n in " 80 77 " ; do expr $n - 83; done
+expr: syntax error
+root@ip-172-31-25-35:~#
+root@ip-172-31-25-35:~#
+root@ip-172-31-25-35:~# for n in  80 77  ; do expr $n - 83; done
+-3
+-6
+root@ip-172-31-25-35:~#
+root@ip-172-31-25-35:~#
+root@ip-172-31-25-35:~#
+root@ip-172-31-25-35:~# for n in  `ps -elf |grep " python3" |grep -v grep`  ; do expr $n - 83; done
+-83
+expr: non-integer argument
+expr: non-integer argument
+18857
+18735
+-83
+-3
+-83
+expr: non-integer argument
+9143
+expr: non-integer argument
+expr: non-integer argument
+expr: non-integer argument
+expr: non-integer argument
+expr: non-integer argument
+-79
+expr: non-integer argument
+expr: non-integer argument
+19180
+18735
+-83
+-6
+-86
+expr: non-integer argument
+9143
+expr: non-integer argument
+expr: non-integer argument
+expr: non-integer argument
+expr: non-integer argument
+expr: non-integer argument
+root@ip-172-31-25-35:~#
+root@ip-172-31-25-35:~#
+root@ip-172-31-25-35:~# for n in  `ps -elf |grep " python3" |grep -v grep|awk '{print $7}'`  ; do expr $n - 83; done
+-3
+-6
+root@ip-172-31-25-35:~#
+root@ip-172-31-25-35:~#
+root@ip-172-31-25-35:~#
+root@ip-172-31-25-35:~# for n in  `ps -elf |grep " python3" |grep -v grep|awk '{print $4}'`  ; do nice -p $n; done
+nice: invalid option -- 'p'
+Try 'nice --help' for more information.
+nice: invalid option -- 'p'
+Try 'nice --help' for more information.
+root@ip-172-31-25-35:~# man nice
+root@ip-172-31-25-35:~#
+root@ip-172-31-25-35:~#
+root@ip-172-31-25-35:~#
+root@ip-172-31-25-35:~# nice
+0
+root@ip-172-31-25-35:~# nice --help
+Usage: nice [OPTION] [COMMAND [ARG]...]
+Run COMMAND with an adjusted niceness, which affects process scheduling.
+With no COMMAND, print the current niceness.  Niceness values range from
+-20 (most favorable to the process) to 19 (least favorable to the process).
+
+Mandatory arguments to long options are mandatory for short options too.
+  -n, --adjustment=N   add integer N to the niceness (default 10)
+      --help     display this help and exit
+      --version  output version information and exit
+
+NOTE: your shell may have its own version of nice, which usually supersedes
+the version described here.  Please refer to your shell's documentation
+for details about the options it supports.
+
+GNU coreutils online help: <http://www.gnu.org/software/coreutils/>
+Report nice translation bugs to <http://translationproject.org/team/>
+Full documentation at: <http://www.gnu.org/software/coreutils/nice>
+or available locally via: info '(coreutils) nice invocation'
